@@ -1,0 +1,22 @@
+project:
+  type: website
+  preview:
+    port: 4200
+
+website:
+  title: "junwkim's blog"
+  description: "technical writing about CS/CE"
+  navbar:
+    background: "#0a3e3c"
+    foreground: White
+    left:
+      - href: pages/introduce.qmd
+        text: introduce
+    right:
+      - href: main.qmd
+        text: Back To Home
+
+format:
+  html:
+    css: styles.css
+    js: script.js

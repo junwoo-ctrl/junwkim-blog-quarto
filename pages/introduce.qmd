@@ -1,0 +1,51 @@
+---
+title: ""
+format:
+  html:
+    toc: false
+---
+
+## 소개글
+안녕하세요. 제 이름은 김준우입니다.
+서울/경기권에 거주하고 있고, 현재는 Machine Learning Engineer로 Gmarket에서 근무하고 있습니다. AI/ML 알고리즘과 엔지니어링 요소를 활용하여 세상에 유용한 application을 제공하는데에 관심이 있습니다.
+
+
+## Career
+#### Makinarocks(Machine Learning Engineer)
+- 2020.01 - 2021.07 (Seoul)
+- 태양광 발전량 예측 프로젝트(SK 계열사 협업프로젝트)
+	- 일기예보 데이터 분석
+	- Regression 기반 모델개발(Tree Based, NN Based)
+- 발전량 예측서비스 개발
+	- AWS EKS 기반 SaaS 개발
+
+#### Musinsa(Search Engineer)
+- 2021.08 - 2022.07 (Seoul)
+- 이미지 검색서비스 개발
+	- 기 사용 Solution을 Internal로 전환하여 비용절감
+	- Object Detection, Classification, Vector Embedding 모델 개발
+	- Elasticsearch 기반 vector 검색 및 Airflow Pipeline 개발
+	- AWS EKS를 활용한 Microservice 개발
+- 연관검색어 추천기능 개발
+	- 검색결과가 없는 페이지(SNR)에서의 UX 지표개선
+	- Fast-Text 기반 vector embedidng 모델개발
+	- Continuous Training / Update 가능한 Airflow Pipeline 개발
+	- 연관검색결과를 제공하는 Internal API Server 개발
+-  팀내 Python Convention 및 Data 분석 Lead
+
+#### Gmarket(Machine Learning Engineer)
+- 2022.08 - Present
+- 홈개인화 서비스개발
+	- 비개인화 유저대상 GMV 26% 개선
+	- Phase 1(tag 검색기반 개인화)
+		- long/short term 유저행동을 기반으로 Tag 추출
+		- Elasticsearch에 적재된 상품풀에 검색하여 ranking되는 상품리스트 제공
+		- Elasticsearch Query Tunning 및 Spring API Server 개발
+	- Phase 2(vector 검색기반 semantic 개인화)
+		- 전문검색(Full-Text) 기반 개인화의 상품 편중현상 해결
+		- Next Step Item을 예측하는 Transformer 기반의 vector model 개발
+		- Elasticsearch 기반 vector 검색 및 Airflow Pipeline 개발
+		- CPU 추론 최적화를 통한 GPU 자원절약
+	- Phase 3(re-ranking을 통한 micro 개인화)
+		- 개인화된 ranking 제공 이후, User Action에 따른 Optimized Ranking 제공 및 Filter Bubble 해결
+		- Item Score / User Score 집계 후, 합산계산하는 방식의 Re-Ranking list 제공
