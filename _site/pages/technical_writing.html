@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,76 +71,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-list1 .list');
+    const listingTargetEl = window.document.querySelector('#listing-technical_writing_list .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-project','listing-website','listing-format','listing-language','listing-title','listing-path','listing-outputHref','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-title","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-list1'] = new List('listing-list1', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-list2 .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-project','listing-website','listing-format','listing-language','listing-title','listing-path','listing-outputHref','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-title","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-list2'] = new List('listing-list2', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-list3 .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-project','listing-website','listing-format','listing-language','listing-title','listing-description','listing-date','listing-author','listing-path','listing-outputHref','listing-date-modified','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-title","listing-description","listing-date","listing-author","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-list3'] = new List('listing-list3', options);
+    window['quarto-listings']['listing-technical_writing_list'] = new List('listing-technical_writing_list', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -184,7 +128,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -194,7 +138,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">junwkim’s blog</span>
     </a>
   </div>
@@ -205,25 +149,25 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./pages/introduce.html"> 
+    <a class="nav-link" href="../pages/introduce.html"> 
 <span class="menu-text">introduce</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./pages/technical_writing.html"> 
+    <a class="nav-link active" href="../pages/technical_writing.html" aria-current="page"> 
 <span class="menu-text">technical_writing</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./pages/posts.html"> 
+    <a class="nav-link" href="../pages/posts.html"> 
 <span class="menu-text">posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./pages/papers.html"> 
+    <a class="nav-link" href="../pages/papers.html"> 
 <span class="menu-text">papers</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./main.html" aria-current="page"> 
+    <a class="nav-link" href="../main.html"> 
 <span class="menu-text">Back To Home</span></a>
   </li>  
 </ul>
@@ -248,40 +192,128 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-custom" id="listing-list1">
-<h2 class="anchored">
-Machine Learning
-</h2>
-<div class="card-container">
-<p><a href="./pages/technical_writing/post4.html" class="card" title="Not written yet"> <img class="card-image" src="images/pen_image.png" alt="이미지 설명"> <span class="card-text">Not written yet - </span> </a></p>
-<p><a href="./pages/technical_writing/post5.html" class="card" title="Not written yet"> <img class="card-image" src="images/pen_image.png" alt="이미지 설명"> <span class="card-text">Not written yet - </span> </a></p>
-<p><a href="./pages/technical_writing/post1.html" class="card" title="Working In Progess"> <img class="card-image" src="images/pen_image.png" alt="이미지 설명"> <span class="card-text">Working In Progess - </span> </a></p>
-<p><a href="./pages/technical_writing/post2.html" class="card" title="Not written yet"> <img class="card-image" src="images/pen_image.png" alt="이미지 설명"> <span class="card-text">Not written yet - </span> </a></p>
-<p><a href="./pages/technical_writing/post3.html" class="card" title="Not written yet"> <img class="card-image" src="images/pen_image.png" alt="이미지 설명"> <span class="card-text">Not written yet - </span> </a></p>
+<div class="quarto-listing quarto-listing-container-grid" id="listing-technical_writing_list">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1711360822572" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<a href="../pages/technical_writing/post4.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Not written yet
+</h5>
+<div class="card-text listing-description">
+
+
+
+
+
 </div>
-<div class="listing-no-matching d-none">
-No matching items
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
 </div>
-</div><div class="quarto-listing quarto-listing-container-custom" id="listing-list2">
-<h2 class="anchored">
-Papers
-</h2>
-<div class="card-container">
-<p><a href="./pages/papers/post4.html" class="card" title="Not written yet"> <img class="card-image" src="images/pen_image.png" alt="이미지 설명"> <span class="card-text">Not written yet - </span> </a></p>
-<p><a href="./pages/papers/post5.html" class="card" title="Not written yet"> <img class="card-image" src="images/pen_image.png" alt="이미지 설명"> <span class="card-text">Not written yet - </span> </a></p>
-<p><a href="./pages/papers/post1.html" class="card" title="Working In Progess"> <img class="card-image" src="images/pen_image.png" alt="이미지 설명"> <span class="card-text">Working In Progess - </span> </a></p>
-<p><a href="./pages/papers/post2.html" class="card" title="Not written yet"> <img class="card-image" src="images/pen_image.png" alt="이미지 설명"> <span class="card-text">Not written yet - </span> </a></p>
-<p><a href="./pages/papers/post3.html" class="card" title="Not written yet"> <img class="card-image" src="images/pen_image.png" alt="이미지 설명"> <span class="card-text">Not written yet - </span> </a></p>
 </div>
-<div class="listing-no-matching d-none">
-No matching items
 </div>
-</div><div class="quarto-listing quarto-listing-container-custom" id="listing-list3">
-<h2 class="anchored">
-Posts
-</h2>
-<div class="card-container">
-<p><a href="./pages/posts/gpt_base_blog.html" class="card" title="GPTs Service로 개인블로그 만들기"> <img class="card-image" src="images/pen_image.png" alt="이미지 설명"> <span class="card-text">GPTs Service로 개인블로그 만들기 - Mar 4, 2024</span> </a></p>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1711360836642" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<a href="../pages/technical_writing/post5.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Not written yet
+</h5>
+<div class="card-text listing-description">
+
+
+
+
+
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1711360798649" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<a href="../pages/technical_writing/post2.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Not written yet
+</h5>
+<div class="card-text listing-description">
+
+
+
+
+
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1711360811727" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<a href="../pages/technical_writing/post3.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Not written yet
+</h5>
+<div class="card-text listing-description">
+
+
+
+
+
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1711360786059" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<a href="../pages/technical_writing/post1.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Working In Progess
+</h5>
+<div class="card-text listing-description">
+
+
+
+
+
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
 </div>
 <div class="listing-no-matching d-none">
 No matching items

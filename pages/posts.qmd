@@ -1,0 +1,10 @@
+---
+format:
+  html:
+    code-tools: false
+listing:
+    - id: "posts_list"
+      contents: posts
+      type: grid
+      categories: false
+---

@@ -13,6 +13,12 @@ website:
     left:
       - href: pages/introduce.qmd
         text: introduce
+      - href: pages/technical_writing.qmd
+        text: technical_writing
+      - href: pages/posts.qmd
+        text: posts
+      - href: pages/papers.qmd
+        text: papers
     right:
       - href: main.qmd
         text: Back To Home

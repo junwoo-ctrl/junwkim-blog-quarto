@@ -4,7 +4,7 @@
 <% for (const post of items) { %>
   <a href="<%= post.path %>" class="card" title="<%= post.title %>">
     <img class="card-image" src="images/pen_image.png" alt="이미지 설명">
-    <span class="card-text"><%= post.title %></span>
+    <span class="card-text"><%= post.title %> - <%= post.date %></span>
   </a>
 <% } %>
 </div>

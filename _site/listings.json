@@ -2,21 +2,43 @@
   {
     "listing": "/main.html",
     "items": [
-      "/pages/machine_learning/post4.html",
-      "/pages/machine_learning/post5.html",
-      "/pages/machine_learning/post1.html",
-      "/pages/machine_learning/post2.html",
-      "/pages/machine_learning/post3.html",
+      "/pages/technical_writing/post4.html",
+      "/pages/technical_writing/post5.html",
+      "/pages/technical_writing/post1.html",
+      "/pages/technical_writing/post2.html",
+      "/pages/technical_writing/post3.html",
       "/pages/papers/post4.html",
       "/pages/papers/post5.html",
       "/pages/papers/post1.html",
       "/pages/papers/post2.html",
       "/pages/papers/post3.html",
-      "/pages/posts/post4.html",
-      "/pages/posts/post5.html",
-      "/pages/posts/post2.html",
-      "/pages/posts/post3.html",
       "/pages/posts/gpt_base_blog.html"
+    ]
+  },
+  {
+    "listing": "/pages/posts.html",
+    "items": [
+      "/pages/posts/gpt_base_blog.html"
+    ]
+  },
+  {
+    "listing": "/pages/papers.html",
+    "items": [
+      "/pages/papers/post4.html",
+      "/pages/papers/post5.html",
+      "/pages/papers/post2.html",
+      "/pages/papers/post3.html",
+      "/pages/papers/post1.html"
+    ]
+  },
+  {
+    "listing": "/pages/technical_writing.html",
+    "items": [
+      "/pages/technical_writing/post4.html",
+      "/pages/technical_writing/post5.html",
+      "/pages/technical_writing/post2.html",
+      "/pages/technical_writing/post3.html",
+      "/pages/technical_writing/post1.html"
     ]
   }
 ]

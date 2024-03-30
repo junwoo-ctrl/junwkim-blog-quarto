@@ -1,0 +1,10 @@
+---
+format:
+  html:
+    code-tools: false
+listing:
+    - id: "papers_list"
+      contents: papers
+      type: grid
+      categories: false
+---

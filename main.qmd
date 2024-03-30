@@ -4,14 +4,14 @@ format:
     code-tools: false
 listing:
     - id: "list1"
-      contents: pages/machine_learning
+      contents: pages/technical_writing
       sort: "date asc"
       type: custom
       categories: false
       sort-ui: false
       filter-ui: false
       feed: false
-      template: listing_ml.ejs
+      template: listing_tech_writing.ejs
     - id: "list2"
       contents: pages/papers
       sort: "date desc"
