@@ -1,5 +1,15 @@
 [
   {
+    "listing": "/pages/technical_writing.html",
+    "items": [
+      "/pages/technical_writing/post4.html",
+      "/pages/technical_writing/post5.html",
+      "/pages/technical_writing/post2.html",
+      "/pages/technical_writing/post3.html",
+      "/pages/technical_writing/post1.html"
+    ]
+  },
+  {
     "listing": "/main.html",
     "items": [
       "/pages/technical_writing/post4.html",
@@ -16,12 +26,6 @@
     ]
   },
   {
-    "listing": "/pages/posts.html",
-    "items": [
-      "/pages/posts/gpt_base_blog.html"
-    ]
-  },
-  {
     "listing": "/pages/papers.html",
     "items": [
       "/pages/papers/post4.html",
@@ -32,13 +36,9 @@
     ]
   },
   {
-    "listing": "/pages/technical_writing.html",
+    "listing": "/pages/posts.html",
     "items": [
-      "/pages/technical_writing/post4.html",
-      "/pages/technical_writing/post5.html",
-      "/pages/technical_writing/post2.html",
-      "/pages/technical_writing/post3.html",
-      "/pages/technical_writing/post1.html"
+      "/pages/posts/gpt_base_blog.html"
     ]
   }
 ]
