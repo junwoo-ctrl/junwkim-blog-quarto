@@ -2,37 +2,21 @@
   {
     "listing": "/pages/technical_writing.html",
     "items": [
-      "/pages/technical_writing/post4.html",
-      "/pages/technical_writing/post5.html",
-      "/pages/technical_writing/post2.html",
-      "/pages/technical_writing/post3.html",
-      "/pages/technical_writing/post1.html"
+      "/pages/technical_writing/progress.html"
     ]
   },
   {
     "listing": "/main.html",
     "items": [
-      "/pages/technical_writing/post4.html",
-      "/pages/technical_writing/post5.html",
-      "/pages/technical_writing/post1.html",
-      "/pages/technical_writing/post2.html",
-      "/pages/technical_writing/post3.html",
-      "/pages/papers/post4.html",
-      "/pages/papers/post5.html",
-      "/pages/papers/post1.html",
-      "/pages/papers/post2.html",
-      "/pages/papers/post3.html",
+      "/pages/technical_writing/progress.html",
+      "/pages/papers/progress.html",
       "/pages/posts/gpt_base_blog.html"
     ]
   },
   {
     "listing": "/pages/papers.html",
     "items": [
-      "/pages/papers/post4.html",
-      "/pages/papers/post5.html",
-      "/pages/papers/post2.html",
-      "/pages/papers/post3.html",
-      "/pages/papers/post1.html"
+      "/pages/papers/progress.html"
     ]
   },
   {

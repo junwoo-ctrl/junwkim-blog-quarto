@@ -14,7 +14,7 @@ website:
       - href: pages/introduce.qmd
         text: introduce
       - href: pages/technical_writing.qmd
-        text: technical_writing
+        text: technical writing
       - href: pages/posts.qmd
         text: posts
       - href: pages/papers.qmd

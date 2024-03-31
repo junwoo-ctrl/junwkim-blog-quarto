@@ -1,10 +1,11 @@
-<h2>Machine Learning</h2>
+<h2>technical writing</h2>
 
 <div class="card-container">
 <% for (const post of items) { %>
   <a href="<%= post.path %>" class="card" title="<%= post.title %>">
-    <img class="card-image" src="images/pen_image.png" alt="이미지 설명">
-    <span class="card-text"><%= post.title %> - <%= post.date %></span>
+    <img class="card-image" src=<%=post.image%> alt="이미지 설명">
+    <span class="card-text"><%= post.title %></span>
+    <span class="card-text-author"><%= post.author%>, <%= post.date %></span>
   </a>
 <% } %>
 </div>

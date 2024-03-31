@@ -4,6 +4,7 @@ description: |
     Claude3만으로 Quarto 기반 블로그 만들기
 date: "2024-03-04"
 author: "Junwoo Kim"
+image: "./gpt_base_blog/how_to_build_quarto_website_blog.png"
 ---
 
 ## 개요
