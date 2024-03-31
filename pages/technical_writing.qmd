@@ -6,5 +6,5 @@ listing:
     - id: "technical_writing_list"
       contents: technical_writing
       type: grid
-      categories: false
+      categories: true
 ---

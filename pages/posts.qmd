@@ -6,5 +6,5 @@ listing:
     - id: "posts_list"
       contents: posts
       type: grid
-      categories: false
+      categories: true
 ---

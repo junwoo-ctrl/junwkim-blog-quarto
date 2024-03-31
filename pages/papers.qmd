@@ -6,5 +6,5 @@ listing:
     - id: "papers_list"
       contents: papers
       type: grid
-      categories: false
+      categories: true
 ---
