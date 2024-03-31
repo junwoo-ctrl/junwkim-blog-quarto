@@ -7,46 +7,11 @@
     "text": "Working In Progess\n\n\nNot Written Yet\n\n\n\nJunwoo Kim\n\n\nNov 11, 1111\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "pages/technical_writing/post3.html",
-    "href": "pages/technical_writing/post3.html",
-    "title": "Not written yet",
-    "section": "",
-    "text": "Not written yet"
-  },
-  {
-    "objectID": "pages/technical_writing/post1.html",
-    "href": "pages/technical_writing/post1.html",
+    "objectID": "pages/papers/progress.html",
+    "href": "pages/papers/progress.html",
     "title": "Working In Progess",
     "section": "",
     "text": "Working In Progess"
-  },
-  {
-    "objectID": "pages/technical_writing/post4.html",
-    "href": "pages/technical_writing/post4.html",
-    "title": "Not written yet",
-    "section": "",
-    "text": "Not written yet"
-  },
-  {
-    "objectID": "pages/papers/post3.html",
-    "href": "pages/papers/post3.html",
-    "title": "Not written yet",
-    "section": "",
-    "text": "Not written yet"
-  },
-  {
-    "objectID": "pages/papers/post1.html",
-    "href": "pages/papers/post1.html",
-    "title": "Working In Progess",
-    "section": "",
-    "text": "Working In Progess"
-  },
-  {
-    "objectID": "pages/papers/post4.html",
-    "href": "pages/papers/post4.html",
-    "title": "Not written yet",
-    "section": "",
-    "text": "Not written yet"
   },
   {
     "objectID": "pages/posts/gpt_base_blog.html",
@@ -98,20 +63,6 @@
     "text": "Career\n\nMakinarocks(Machine Learning Engineer)\n\n2020.01 - 2021.07 (Seoul)\n태양광 발전량 예측 프로젝트(SK 계열사 협업프로젝트)\n\n일기예보 데이터 분석\nRegression 기반 모델개발(Tree Based, NN Based)\n\n발전량 예측서비스 개발\n\nAWS EKS 기반 SaaS 개발\n\n\n\n\nMusinsa(Search Engineer)\n\n2021.08 - 2022.07 (Seoul)\n이미지 검색서비스 개발\n\n기 사용 Solution을 Internal로 전환하여 비용절감\nObject Detection, Classification, Vector Embedding 모델 개발\nElasticsearch 기반 vector 검색 및 Airflow Pipeline 개발\nAWS EKS를 활용한 Microservice 개발\n\n연관검색어 추천기능 개발\n\n검색결과가 없는 페이지(SNR)에서의 UX 지표개선\nFast-Text 기반 vector embedidng 모델개발\nContinuous Training / Update 가능한 Airflow Pipeline 개발\n연관검색결과를 제공하는 Internal API Server 개발\n\n팀내 Python Convention 및 Data 분석 Lead\n\n\n\nGmarket(Machine Learning Engineer)\n\n2022.08 - Present\n홈개인화 서비스개발\n\n비개인화 유저대상 GMV 26% 개선\nPhase 1(tag 검색기반 개인화)\n\nlong/short term 유저행동을 기반으로 Tag 추출\nElasticsearch에 적재된 상품풀에 검색하여 ranking되는 상품리스트 제공\nElasticsearch Query Tunning 및 Spring API Server 개발\n\nPhase 2(vector 검색기반 semantic 개인화)\n\n전문검색(Full-Text) 기반 개인화의 상품 편중현상 해결\nNext Step Item을 예측하는 Transformer 기반의 vector model 개발\nElasticsearch 기반 vector 검색 및 Airflow Pipeline 개발\nCPU 추론 최적화를 통한 GPU 자원절약\n\nPhase 3(re-ranking을 통한 micro 개인화)\n\n개인화된 ranking 제공 이후, User Action에 따른 Optimized Ranking 제공 및 Filter Bubble 해결\nItem Score / User Score 집계 후, 합산계산하는 방식의 Re-Ranking list 제공"
   },
   {
-    "objectID": "pages/papers/post5.html",
-    "href": "pages/papers/post5.html",
-    "title": "Not written yet",
-    "section": "",
-    "text": "Not written yet"
-  },
-  {
-    "objectID": "pages/papers/post2.html",
-    "href": "pages/papers/post2.html",
-    "title": "Not written yet",
-    "section": "",
-    "text": "Not written yet"
-  },
-  {
     "objectID": "pages/papers.html",
     "href": "pages/papers.html",
     "title": "junwkim's blog",
@@ -119,31 +70,10 @@
     "text": "Working In Progess\n\n\nNot Written Yet\n\n\n\nJunwoo Kim\n\n\nNov 11, 1111\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "pages/technical_writing/post5.html",
-    "href": "pages/technical_writing/post5.html",
-    "title": "Not written yet",
-    "section": "",
-    "text": "Not written yet"
-  },
-  {
-    "objectID": "pages/technical_writing/post2.html",
-    "href": "pages/technical_writing/post2.html",
-    "title": "Not written yet",
-    "section": "",
-    "text": "Not written yet"
-  },
-  {
     "objectID": "pages/posts.html",
     "href": "pages/posts.html",
     "title": "junwkim's blog",
     "section": "",
     "text": "GPTs Service로 개인블로그 만들기\n\n\nClaude3만으로 Quarto 기반 블로그 만들기\n\n\n\nJunwoo Kim\n\n\nMar 4, 2024\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "pages/papers/progress.html",
-    "href": "pages/papers/progress.html",
-    "title": "Working In Progess",
-    "section": "",
-    "text": "Working In Progess"
   }
 ]
