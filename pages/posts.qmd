@@ -7,4 +7,9 @@ listing:
       contents: posts
       type: grid
       categories: true
+      page-size: 12
+      feed: true
+page-layout: full
+title-block-banner: false
+comments: false
 ---

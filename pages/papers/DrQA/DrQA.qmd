@@ -1,0 +1,134 @@
+---
+title: "DrQA: Reading Wikipedia to Answer Open-Domain Questions"
+description: |
+    ODQA의 시작점이 되는 논문을 소개합니다.
+date: "2023-12-24"
+author: "Junwoo Kim"
+image: "./DrQA.png"
+---
+
+## Abstract
+DrQA는 open-domain QA task에 대해, wikipedia와 같은 외부지식소스를 활용한 사실적인 답변을 하는 방식을 제안한다. 
+기계판독(machine reading) task는 연관성있는 document retrieval과 text에 대한 machine comprehension을 결합하는 과제이다.
+DrQA는 bi-gram hashing과 tf-idf matching으로 동작하는 방식과 multi-layer rnn모델의 훈련으로 Wikipedia에서 답변을 탐지해내는 두 검색의 요소를 결합하는 방식을 제안한다.
+제안된 방법은 이미 존재하는 QA데이터셋에서 월등한 성능향상을 보였고, multi-task learning과 관련한 supervision 확보에서도 유효함을 증명했다.
+
+## Introduction
+Wikipedia를 odqa task에서의 데이터셋으로 사용하는 시도는 오래전부터 있어왔지만, 아쉽게도 기계가 아닌 human interested로 구축되어 있다. 그렇지만 Wikipedia는 수백~수천만
+개의 document로 구성되어 있기 때문에 large scale opqa와 기계의 text comprehension에 활용되어 왔다.
+
+통상적으로 그 어떠한 질문에라도 답변하려면 두 단계를 거쳐야하는데, 먼저 500만이 넘는 answer 후보 중에 relevant articles를 retrieve해야하고, 그렇게 찾은 후보군 중에서
+조심스럽게 답변을 식별해야한다(identify). 이러한 단계구축을 MRS(machine reading at scale) 라고 명명한다. 이러한 단계로 구성하면 internal graph등을 구축할 필요가 없다는
+장점이 존재한다. 또한, 이러한 방식은 지식소스에 대한 일반화를 달성하여 어떤 종류의 문서뭉치, 책, 심지어 news와 같은 daily paper에도 적용될 수 있다.
+
+IBM이 제안한 DeepQA같은 large-scale QA 시스템은 Wikipedia가 아닌 매우 많은 answer source를 활용한다. 또한 이런 소스들은 이미 구축된 KnowledgeBase Pair를 사용한다.
+결과적으로 이러한 답변은 소스간의 중복성에 영향을 받아 답변이 매우 정확해지고 뾰족해지는 현상을 유발한다. (아마도 검색용도로는 정확하되 진정한 의미의 machine reading이 아니
+다 라는 말을 하고 싶었던 것 같음)
+
+때문에 이런 배경을 토대로 machine reading ability에 대한 연구와 SQuAD나 CNN/Daily Mail, CBT와 같은 데이터셋의 생성으로 이어졌다.
+
+그러나, 이러한 machine comprehension 접근들은 연관있는 문서에 대한 short piece text를 미리 구축하고 모델에 조건으로 준다는 것을 가정하고 있고, 이것은 진정한 의미의 open-
+domain question answering에 부합하지 않는다.  이러한 접근들은 검색솔루션의 일부로 취급되어야 한다. MRS에 촛점을 맞추면 기계이해를 한다는 맥락은 유지하면서도 하위문서에 
+대한 이해와 현실적인 large open resource를 유지할 수 있다.
+
+ 
+
+논문에서는 여러 종류의 QA 데이터셋에 대해 MRS를 평가할때 제안된 시스템이 강력하게 동작하는 것을 증명할 것이다.
+Wikipedia를 활용한 Strong QA 시스템(DrQA)는 다음과 같은 요소들로 구성된다. 
+
+1. Document Retriever: bigram hash / TF-IDF matching으로 수백만개의 문서에서 효율적으로 연관문서 subset를 찾아주는 module
+
+2. Document Reader: 수집된 연관문서를 입력으로 하는 multi-layer rnn네트워크로써, 답변의 범위를 탐지하고 답변하도록 훈련된 module
+
+
+
+![An Overview of out question answering system DrQA](./DrQA.png)
+이러한 방식으로 훈련된 DrQA의 Document Retriever는 위키피디아의 내장 검색엔진보다 더 강력하고 ,아주 많은 데이터셋(SQuAD 포함)에서 SOTA를 달성하는 성능을 보여준다.
+특히 단일 task traning보다 multi-task training에서 더 강력함을 보여준다.
+
+
+
+## Related Work
+Open-Domain QA는 원래 구조화되지 않은 수집된 문서들에 대해 답변된 TREC competition으로부터 유래했다. KnowledgeBased의 발전에 따라 QA를 잘하려는 많은 시도들이
+있어왔지만, 대부분 KBs의 근본적인 한계(incompleteness, fixed schemas)를 극복하지 못해 결국은 raw text로부터 곧바로 answering을 수행하는 방향으로 선회되었다.
+
+machine comprehension에 관한 두번째 motivation은 기계가 짧은 text 혹은 story를 듣고 난 후에 답변하는 것이다. 이러한 접근방법은 attention based 그리고 memory augmented
+neural network 등의 딥러닝 아키텍쳐 연구와 함께 진행되었다. 이런 방향의 연구들은 open-domain QA task에서 좋은 성능과 새로운 framework들을 제안해왔다.
+
+ 
+
+한편, Wikipedia를 활용한 연구에서는 대부분 구조화된 Knowledge Base Model이 주를 이루었는데, 이러한 방식들은 미리 문서로부터 접근가능한 sub-text 등을 뽑고 카테고리와
+같은 여러가지 pattern들을 미리 준비시켜놓는 방식이었다.
+
+DrQA는 오로지 주어진 text에 대해서만 고려하며, Wikipedia text documents는 오로지 MRS에 보조되는 용도로만 고려한다.
+
+그 외에도 AskMSR(MS), DeepQA(IBM) 등 QA Pipeline을 구축하는 관점에서의 연구들은 대부분 KnowledgeBase를 활용한 검색시스템 구축 관점에서의 연구성과이지 온전하게
+text comprehension을 바탕으로 한 QA시스템으로 보기는 어려웠다.
+
+
+
+#### **Document Retriever**
+Classical QA system을 따라 machine learning을 사용하지 않는 document retrieval system을 사용한다. document retriever는 어느정도 유의미한 articles을 찾아서 돌려준다.
+보통 inverted index를 바라보고 각 term에 대한 vector scoring model을 통해 점수를 계산하여 질문에 대한 답변을 찾는다. 이러한 작업은 Wikipedia 내장 Search API인 Elastic-
+search에서도 잘 동작한다. Qustion과 Articles는 TF-IDF weighted bag-of-words vectors로 비교된다.
+
+또한 여기서 더 나아가 local word에 대한 n-gram features를 통해 더 나은 성능을 보였다. Feature hashing for large scale multitask learning 논문에서 제안하는 
+hashing 방법과 bigram을 통해 메모리 효율적이고 속도도 향상된 시스템을 개발했다.
+
+DrQA에서 개발된 document retriever는 5개의 wikipedia articles를 반환하도록 설정되었다. 이렇게 검색된 document는 document reader에 의해 처리된다.
+
+ 
+
+#### **Document Reader**
+Document Retriever는 machine comprehension task에서 큰 성공을 거든 AttentiveReader의 구조를 차용한 neural network로 구성된다. document retreiver의 정의는
+다음과 같다.
+
+- 주어진 quesetion q를 구성하는 $l$ tokens를 $\{q_1, ..., q_l\}$로 한다.
+- small set of documents의 $n$ paragraphs 중에서 하나를 선택한 paragraphs $p$를 구성하는 $m$ tokens를 $\{p_1, ..., p_m\}$으로 한다.
+
+RNN Model은 각 paragraph를 입력으로 받아 나온 출력을 aggregate하여 answer를 predict하는 task를 수행한다. 좀 더 구체화하여 나눠서 정의하면 다음과 같다. 
+
+##### **Paragraph Encoding**
+모든 토큰 p_i를 d차원의 sequence of feature vector인 $p^{~}_{i}$로 RNN을 통과시켜 생성한다.
+
+${p_1, ... , p_m} = RNN({p˜1, . . . , p˜m})$
+
+paragraph bold pi는 token pi로부터 유의미한 정보들을 가진 context information으로 압축된다. 이때, multi-layer bidirectional lstm을 사용하여 각 layer들의
+end hidden units의 출력값을 취합한다. 이렇게 생성된 feature vector p~i는 다음과 같이 구성된다.
+
+##### **Word Embeddings**
+
+300차원의 Glove word embedding을 사용한다. 대부분의 word embedding은 고정하고, 1000여개 정도의 most frequent question words에 대해서만 fine-tune
+what, how, which, many 등의 단어는 QA System에서는 매우 치명적이고 중요하기 때문
+
+##### **Exact Match**
+
+$f_{exact\_match}(pi) = I(pi ∈ q).$
+
+3개의 simple한 binary features를 사용했는데, pi(토큰)이 질문에 들어있는 단어인지, lower-case문자인지, 혹은 lemma form(유사한뜻)인지 여부에 따라 표기한다.
+이러한 feature의 사용은 매우 강력하고 Section 5에서 살펴볼것.
+
+##### **Token Features**
+
+$f_{token}(pi) = (POS(pi), NER(pi), TF(pi)).$
+
+token p{i}의 일부 속성을 반영하는 몇가지 feature를 추가한다. 품사(Part Of Speeach, POS), NER(Name Entity Recognition), 용어빈도 TF(Term Frequency) 등이다.
+
+##### **Aligned Question Embedding**
+
+DrQA 작성당시의 논문추세로, question embedding을 할당한다.
+
+$f_{align}(pi) = \Sigma_{j} a_{i,j} E(q_{j})$ 로 표현되며, attention score $a_{i,j}$는 paragraph token pi와 each question words $q_j$의 similarity로 동작한다.
+
+$a_{i,j}$ score는 dot-products로 계산되어 비선형적인 word embedding으로 구성된다.
+
+![Aligned Question Embedding](./aligned_question_embedding.png)
+
+
+위 식에서 알파는 ReLU를 포함한 single dense layer이다. 이런식으로 학습하면 비슷하지만 Non-identical words를 학습하는데에 도움이 된다.(car & vehicle)
+
+
+#### **Prediction**
+Paragraph Level에서, 우리의 목표는 가장 정답과 근사한 span of tokens를 예측하는 것이다. 우리는 Paragraph vectors {p1, . . . , pm}과 question vector q를 입력으로
+가지고 있고, 두개의 classifier를 통해 두개의 ends of the span을 예측하도록 독립적으로 학습한다.
+

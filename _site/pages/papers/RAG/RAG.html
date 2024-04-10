@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Junwoo Kim">
+<meta name="dcterms.date" content="2023-12-27">
+<meta name="description" content="LLM이 가진 약점을 타파하려는 현시점 가장 유의미한 시도를 정리합니다.">
 
-<title>junwkim’s blog</title>
+<title>junwkim’s blog - RAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +26,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,35 +69,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-papers_list .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-papers_list'] = new List('listing-papers_list', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
+<script src="../../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -128,17 +103,17 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">junwkim’s blog</span>
     </a>
   </div>
@@ -149,25 +124,25 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../pages/introduce.html"> 
+    <a class="nav-link" href="../../../pages/introduce.html"> 
 <span class="menu-text">introduce</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pages/technical_writing.html"> 
+    <a class="nav-link" href="../../../pages/technical_writing.html"> 
 <span class="menu-text">technical writing</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pages/posts.html"> 
+    <a class="nav-link" href="../../../pages/posts.html"> 
 <span class="menu-text">posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../pages/papers.html" aria-current="page"> 
+    <a class="nav-link" href="../../../pages/papers.html"> 
 <span class="menu-text">papers</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../main.html"> 
+    <a class="nav-link" href="../../../main.html"> 
 <span class="menu-text">Back To Home</span></a>
   </li>  
 </ul>
@@ -178,79 +153,250 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">RAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task.</h1>
+</div>
+
+<div>
+  <div class="description">
+    <p>LLM이 가진 약점을 타파하려는 현시점 가장 유의미한 시도를 정리합니다.</p>
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Junwoo Kim </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 27, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
+</header>
 
 
+<section id="large-language-model-open-domain-question-answering" class="level2">
+<h2 class="anchored" data-anchor-id="large-language-model-open-domain-question-answering">Large Language Model, Open-Domain Question Answering</h2>
+<p>일반적으로 LLM은 방대한 양의 데이터를 기반으로 사전학습(Pre-Trained)된 GPT Based Model을 의미한다. GPT는 Next-Token-Prediction을 수행하는 Pretraining 과정을 거치며 자연어 테스크들에서 유의미한 성과들을 보여왔다.</p>
+<p>LLM을 활용하려는 시도 중 하나는 LLM에 질문을 하고 올바른(품질이 좋은) 답변을 얻는 것이다. 이러한 분야를 Open-Domain Question Answering(ODQA)라고 정의한다. 따라서 ODQA에서는 input text를 question으로, output text를 answer로 하는 Framework로 정의한다.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+A[Who was Cleopatra?] --&gt; B[LLM]
+B --&gt; C[Cleopatra was a famous Egyptian queen.]
+
+style A fill:#fff,stroke:#000,color:#000
+style B fill:#fff,stroke:#000,color:#000
+style C fill:#fff,stroke:#000,color:#000
+linkStyle 0 stroke:#000, stroke-width:1px, stroke-linecap:butt;
+linkStyle 1 stroke:#000, stroke-width:1px, stroke-linecap:square;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>질문을 입력하면 답변을 생성한다는 점에서 LLM을 QA Task에서 생성하는 것이 굉장히 주목을 받게 되었다. 그런데 답변을 생성해내는 것까지는 좋은 일인데, LLM에 아주 잘못된 입력을 해도 그럴듯하게 답변을 생성해내는 Hallucination 현상이 대두되었다.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+A[Who is the brave Korean Cleopatra?]
+style A fill:#fff,stroke:#000,color:#000
+
+B[LLM]
+style B fill:#fff,stroke:#000,color:#000
+
+C[She was a very brave and famous independence activist.]
+style C fill:#fff,stroke:#000,color:#000
+
+A --&gt; B
+linkStyle 0 stroke:#000, stroke-width:1px, stroke-linecap:butt;
+
+B --&gt; C
+linkStyle 1 stroke:#000, stroke-width:1px, stroke-linecap:butt;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Example of Hallucination</p>
+<p>또한, QA Task의 용도로 사용하기에는 단편적이고 간단한 답변을 내놓는 경향이 있다. 이러한 단점을 보강하기 위해 한동안은 Hallucination을 피하고 답변의 생성을 도와주기 위해 Context를 붙이는 방식이 선호되었다.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+A[Who is the brave Korean Cleopatra?]
+style A fill:#fff,stroke:#000,color:#000
+
+B[LLM]
+style B fill:#fff,stroke:#000,color:#000
+
+C[She was a very brave and famous independence activist.]
+style C fill:#fff,stroke:#000,color:#000
+
+subgraph Context
+D[We are talking about ancient romain history.]
+style D fill:#fff,stroke:#000,color:#000
+end
+style Context fill:#fff,stroke:#000,color:#000
 
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-papers_list">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1703343600000" data-listing-file-modified-sort="1712502758092" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="868">
-<a href="../pages/papers/DrQA/DrQA.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="../pages/papers/DrQA/DrQA.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-DrQA: Reading Wikipedia to Answer Open-Domain Questions
-</h5>
-<div class="card-text listing-description">
-<p>ODQA의 시작점이 되는 논문을 소개합니다.</p>
+A --&gt; B
+linkStyle 0 stroke:#000, stroke-width:1px, stroke-linecap:butt;
+
+B --&gt; C
+linkStyle 1 stroke:#000, stroke-width:1px, stroke-linecap:butt;
+
+D --&gt; B
+linkStyle 2 stroke:#000, stroke-width:1px, stroke-linecap:butt;
+</pre>
 </div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Junwoo Kim
-</div>
-<div class="listing-date">
-Dec 24, 2023
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
+<p>Context를 입력 프롬프트에 추가하는 방식이 동작하는 이유는 근본적으로 GPT는 Next Token Prediction을 수행하는 모델이기 때문이다. 앞서 등장한 Token들과 연관이 큰 답변을 생성해야하니 Context를 잘 조절하면 Hallucination을 막는것은 물론 질 좋은 답변을 생성하는 데에도 도움이 된다.</p>
+<p>그러나 세상에 존재하는 Question은 사실상 무한하고, Question마다 의미있는 Context를 생성하는 작업은 무척 비효율적이다. 또한, Knowledge Intensive한 경우 Context를 생성하는 비용 자체가 비싸다는 단점이 있다. RAG(Retrieval Augmented Generation)은 이러한 문제를 해결하기 위해 제시되었다.</p>
+</section>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures.</p>
+<ul>
+<li>대규모 사전훈련 모델은 사실적인 정보들을 파라미터에 저장하고, 이를 통해 downstream NLP task에서 state-of-the-art 결과를 보여왔다.</li>
+<li>그런 연구들에서 지식을 정밀하게 조작하고 접근하는 능력은 한계가 있었고, 그러므로 이러한 구조는 knowledge-intensive한 task들에서는 성능저하가 발생했다.</li>
+</ul>
+<p>Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems.</p>
+<ul>
+<li>추가적으로, 모델의 decisions에 대한 근거를 제공하거나 새로운 knowledge를 업데이트 하는 것은 여전히 문제로 남아있다</li>
+</ul>
+<p>We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever.</p>
+<ul>
+<li>우리는 검색증강 생성(RAG)을 위한 fine-tunning recipe를 찾아보았고, 언어 생성을 위한 pretrained parametric 모델과 non-parametric memory로 구성된 모델구조를 제안한다.</li>
+<li>RAG 모델은 사전훈련된 Seq2Seq 모델과 Dense Vector로 구성된 Knowledge Index, 그리고 Index에 접근하기 위한 pre-trained neural retriever로 구성되었다.</li>
+</ul>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Pre-trained neural language models have been shown to learn a substantial amount of in-depth knowledge from data. They can do so without any access to an external memory, as a parameterized implicit knowledge base. While this development is exciting, such models do have downsides: They cannot easily expand or revise their memory, can’t straightforwardly provide insight into their predictions, and may produce “hallucinations”.</p>
+<ul>
+<li>pre-trained neural language models은 데이터로부터 상당한 양의 지식을 배우는 것으로 보여졌고, external memory나 knowledge base에 접근하지 않고서도 가능하다고 여겨졌다.</li>
+<li>이런 발전은 흥미로웠지만, memory를 쉽게 확장하거나 수정하지 못했고 prediction에 대한 직접적인 근거를 제시하지 못했고, Hallucinations를 발생시켰다.</li>
+</ul>
+<p>Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e.&nbsp;sequence-to-sequence (seq2seq) models. We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever.</p>
+<ul>
+<li>우리는 NLP Task에서는 정석이라고 할 수 있는 Seq2Seq 모델을 활용한 <strong>Parametric Memory</strong>와 <strong>Non-Parametric Memory</strong>를 구성했다.</li>
+<li>RAG models의 parametric memory는 seq2seq transformer이고, non-parametric memory는 wikipedia를 활용한 dense vector index이다. 이때의 dense vector를 생성하는 pre-trained neural retriever를 포함한다.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./RAG_Architecture.png" class="img-fluid figure-img"></p>
+<figcaption>RAG Architecture</figcaption>
+</figure>
 </div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1703602800000" data-listing-file-modified-sort="1712747597618" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1233">
-<a href="../pages/papers/RAG/RAG.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="../pages/papers/RAG/RAG.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-RAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task.
-</h5>
-<div class="card-text listing-description">
-<p>LLM이 가진 약점을 타파하려는 현시점 가장 유의미한 시도를 정리합니다.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Junwoo Kim
-</div>
-<div class="listing-date">
-Dec 27, 2023
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</section>
+<section id="method" class="level2">
+<h2 class="anchored" data-anchor-id="method">Method</h2>
+<p>We explore RAG models, which use the input sequence x to retrieve text documents z and use them as additional context when generating the target sequence y.</p>
+<ul>
+<li>우리가 RAG model을 다룰 때, input sequence x에 대해 text document 집합인 z를 검색하고, 이러한 z들을 additional context로 사용하여 target sequence y를 생성하는데에 사용한다.</li>
+</ul>
+<p>In one approach, RAG-Sequence, the model uses the same document to predict each target token. The second approach, RAG-Token, can predict each target token based on a different document. In the following, we formally introduce both models and then describe the pη and pθ components, as well as the training and decoding procedure.</p>
+<ul>
+<li>generation 단계에서 z를 사용하는 방식에 따라 RAG-Sequence와 RAG-Token 방식으로 구분한다.</li>
+<li>Rag-Sequence은 각 token(1개의 output prediction에 사용된)을 예측하기 위해 같은 문서를 사용하고, Rag-Token은 각 token을 예측하기 위해 다른 문서를 사용한다</li>
+</ul>
+<section id="models" class="level4">
+<h4 class="anchored" data-anchor-id="models"><strong>Models</strong></h4>
+<section id="retriever-dpr" class="level5">
+<h5 class="anchored" data-anchor-id="retriever-dpr"><strong>Retriever: DPR </strong></h5>
+<p><span class="math inline">\(p_{\eta}(z|x) \propto\ exp \left(d(z)\right)^T q(x)\)</span></p>
+<p>The retrieval component pη(z|x) is based on DPR [26]. DPR follows a bi-encoder architecture: where d(z) is a dense representation of a document produced by a BERTBASE document encoder [8], and q(x) a query representation produced by a query encoder, also based on BERTBASE.</p>
+<ul>
+<li>RAG의 retriever는 DPR로부터 가져온 것이다.</li>
+<li>DPR은 Bert로 구성된 Bi-Encoder 구조를 가지고 있는데, <span class="math inline">\(d(z)\)</span>는 document를 색인할 벡터 데이터베이스를 생성하는 용도의 encoder이고, <span class="math inline">\(q(x)\)</span>는 입력 쿼리를 encoding하는 용도이다.</li>
+<li>Non-Parametric Memory라고 한다.</li>
+</ul>
+</section>
+<section id="rag-sequence" class="level5">
+<h5 class="anchored" data-anchor-id="rag-sequence"><strong>RAG-Sequence</strong></h5>
+<p>The RAG-Sequence model uses the same retrieved document to generate the complete sequence. Technically, it treats the retrieved document as a single latent variable that is marginalized to get the seq2seq probability p(y|x) via a top-K approximation. Concretely, the top K documents are retrieved using the retriever, and the generator produces the output sequence probability for each document, which are then marginalized,</p>
+<p><span class="math inline">\(P_{RAG-Sequence}(y|x) \approx \sum_{z \in top-k(p(\cdot|x))} p_{\eta}(z|x)p_{\theta}(y|x,z) = \sum_{z \in top-k(p(\cdot|x))} p_{\eta}(z|x) \prod_{i}^{N} p_{\theta}(y_{i}|x,z,y_{1:i-1})\)</span></p>
+<ul>
+<li>1개의 output prediction이 token <span class="math inline">\(\{y_1, ..., y_N\}\)</span>로 구성되었다고 가정한다.</li>
+<li><span class="math inline">\(y_i\)</span>번째 token을 구할 때, <span class="math inline">\(y_1\)</span>부터 <span class="math inline">\(y_{i-1}\)</span>까지의 token과 latent document z1을 사용한다.
+<ul>
+<li><span class="math inline">\(p(y_1) \leftarrow p(x, z_1, y_0)\)</span> , 아직 <span class="math inline">\(y_0\)</span>는 존재하지 않음</li>
+<li><span class="math inline">\(p(y_2) \leftarrow p(x, z_1, y_1)\)</span></li>
+<li><span class="math inline">\(p(y_3) \leftarrow p(x, z_1, y_{(1, 2)})\)</span></li>
+<li><span class="math inline">\(p(y_4) \leftarrow p(x, z_1, y_{(1, 2, 3)})\)</span></li>
+<li>…</li>
+<li><span class="math inline">\(p(y_N) \leftarrow p(x, z_1, y_{1:N-1})\)</span></li>
+</ul></li>
+<li>k개의 z를 retriever로부터 찾아왔다는 가정이므로 k개의 document에 대해 반복할 수 있다.</li>
+<li>각 자리(<span class="math inline">\(1, .., N\)</span>)별로 존재하는 K개의 Token을 marginalize한다.</li>
+</ul>
+</section>
+<section id="rag-token" class="level5">
+<h5 class="anchored" data-anchor-id="rag-token"><strong>RAG-Token</strong></h5>
+<p>In the RAG-Token model we can draw a different latent document for each target token and marginalize accordingly. This allows the generator to choose content from several documents when producing an answer. Concretely, the top K documents are retrieved using the retriever, and then the generator produces a distribution for the next output token for each document, before marginalizing, and repeating the process with the following output token, Formally, we define:</p>
+<p><span class="math inline">\(P_{RAG-TOKEN}(y|x) \approx \prod_{i}^{N} \sum_{z \in top-k(p(\cdot|x))}p_{\eta}(z|x)p_{\theta}(y_{i}|x,z,y_{1:i-1})\)</span></p>
+<ul>
+<li>1개의 output prediction이 token <span class="math inline">\(\{y_1, ..., y_N\}\)</span>로 구성되었다고 가정한다.</li>
+<li><span class="math inline">\(y_i\)</span>번째 token을 구할 때, <span class="math inline">\(y_1\)</span>부터 <span class="math inline">\(y_{i-1}\)</span>까지의 token을 준비한다.
+<ul>
+<li>이 토큰들과 latent <span class="math inline">\(z_1\)</span>를 가지고 <span class="math inline">\(y_i\)</span> token 확률을 구한다.</li>
+<li>이 토큰들과 latent <span class="math inline">\(z_2\)</span>를 가지고 <span class="math inline">\(y_i\)</span> token 확률을 구한다.</li>
+<li>…</li>
+<li>이 토큰들과 latent <span class="math inline">\(z_k\)</span>를 가지고 <span class="math inline">\(y_i\)</span> token 확률을 구한다.</li>
+</ul></li>
+<li>구해진 k개의 token 후보들을 가지고 marginalize하여 <span class="math inline">\(y_i\)</span>번째 token을 구한다.</li>
+</ul>
+</section>
+<section id="generator-bart" class="level5">
+<h5 class="anchored" data-anchor-id="generator-bart"><strong>Generator: BART</strong></h5>
+<p>The generator component pθ(yi |x, z, y1:i−1) could be modelled using any encoder-decoder. We use BART-large [32], a pre-trained seq2seq transformer [58] with 400M parameters. To combine the input x with the retrieved content z when generating from BART, we simply concatenate them. BART was pre-trained using a denoising objective and a variety of different noising functions.</p>
+<ul>
+<li>generator <span class="math inline">\(p_{\theta} (y_{i}|x, z, y_{1:i-1})\)</span> 는 BART-Large 400M 모델을 사용한 encoder-decoder 구조이다.</li>
+<li>input query x와 retrieved document z를 심플하게 concatenate하였다.</li>
+<li>Parametric Memory라고 부른다.</li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

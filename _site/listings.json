@@ -9,14 +9,16 @@
     "listing": "/main.html",
     "items": [
       "/pages/technical_writing/progress.html",
-      "/pages/papers/progress.html",
+      "/pages/papers/RAG/RAG.html",
+      "/pages/papers/DrQA/DrQA.html",
       "/pages/posts/gpt_base_blog.html"
     ]
   },
   {
     "listing": "/pages/papers.html",
     "items": [
-      "/pages/papers/progress.html"
+      "/pages/papers/DrQA/DrQA.html",
+      "/pages/papers/RAG/RAG.html"
     ]
   },
   {
