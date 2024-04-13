@@ -1,0 +1,16 @@
+{
+  "name": "JKB",
+  "short_name": "JKB",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a3e3c",
+  "description": "A blog created with Quarto.",
+  "icons": [
+    {
+      "src": "/images/pen_image.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+  ]
+}

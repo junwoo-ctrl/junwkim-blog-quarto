@@ -7,83 +7,6 @@
     "text": "Working In Progess\n\n\nNot Written Yet\n\n\n\nJunwoo Kim\n\n\nNov 11, 1111\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "pages/papers/progress.html",
-    "href": "pages/papers/progress.html",
-    "title": "Working In Progess",
-    "section": "",
-    "text": "Working In Progess"
-  },
-  {
-    "objectID": "pages/posts/gpt_base_blog.html",
-    "href": "pages/posts/gpt_base_blog.html",
-    "title": "GPTs Service로 개인블로그 만들기",
-    "section": "",
-    "text": "오랫동안 notion, confluence wiki 등 많은 블로그 서비스를 시도해 왔습니다. 어떤 도구는 지나치게 자유도가 높고 어떤 도구는 자유도가 낮은 대신 많은 기능을 제공했지만, 오히려 그게 불편해져서 그 중간 사이 어딘가의 포스팅 도구를 찾았습니다.\n마침 같은 팀에서 근무하는 분이 Quarto를 추천해주셨고, 이를 활용해 블로그를 개발할 때 Claude3(Opus, Sonnet)을 적극적으로 사용했는데 아마도 직접적으로 프론트업계에 종사하지 않는 엔지니어/과학자 분들에게 도움이 될까 싶어 그 과정을 남깁니다."
-  },
-  {
-    "objectID": "pages/posts/gpt_base_blog.html#개요",
-    "href": "pages/posts/gpt_base_blog.html#개요",
-    "title": "GPTs Service로 개인블로그 만들기",
-    "section": "",
-    "text": "오랫동안 notion, confluence wiki 등 많은 블로그 서비스를 시도해 왔습니다. 어떤 도구는 지나치게 자유도가 높고 어떤 도구는 자유도가 낮은 대신 많은 기능을 제공했지만, 오히려 그게 불편해져서 그 중간 사이 어딘가의 포스팅 도구를 찾았습니다.\n마침 같은 팀에서 근무하는 분이 Quarto를 추천해주셨고, 이를 활용해 블로그를 개발할 때 Claude3(Opus, Sonnet)을 적극적으로 사용했는데 아마도 직접적으로 프론트업계에 종사하지 않는 엔지니어/과학자 분들에게 도움이 될까 싶어 그 과정을 남깁니다."
-  },
-  {
-    "objectID": "pages/posts/gpt_base_blog.html#quarto-소개",
-    "href": "pages/posts/gpt_base_blog.html#quarto-소개",
-    "title": "GPTs Service로 개인블로그 만들기",
-    "section": "Quarto 소개",
-    "text": "Quarto 소개\nQuarto 데이터 사이언스 홈페이지에서는\n“Quarto 는 Pandoc에 기반한 오픈소스 과학기술 출판시스템이다. 하지만 특정 언어에 종속되지 않고 R, 파이썬, 쥴리아, 자바스크립트(Observable JS) 를 지원하고 있으며 이를 통해 다음 출판 저작물 작성이 가능하다.”\n라고 설명하고 있습니다. 개인적으로는 깔끔한 Layout을 제공하고, 마크다운 문법을 기반으로 동작하며 필요시에는 어렵지 않게 커스터마이징 할 수 있다는게 가장 큰 장점으로 생각합니다.\n\nInstall\nQuarto 홈페이지에 들어가서 Get Started 탭을 누르면 자신의 환경에 따라 설치할 수 있는 가이드를 제시해줍니다. 구글링으로 검색하면 여러가지 terminal command를 제시해주지만 해당 문서에서 가이드하는대로 시도하는게 가장 좋습니다. 저는 MacOS 유저이고, 터미널에서 vanilla vim으로 작업을 좋아하기 때문에 Quarto를 설치하기만 했습니다.\n\nhttps://quarto.org/docs/get-started/\n\n\n\n첫 화면\nQuarto를 사용하면 가장 먼저 _quarto.yaml을 작성해야합니다. 사실 글 제목인 Claude에게 물었을 때는 main.qmd를 먼저 작성하라고 안내해줬지만, 지금 작업하는 것이 웹페이지로 배포하기 위함이라는 사실을 인지시켜주면 다음과 같이 답변해줍니다.\n\n\n\nhow to build quarto website blog?\n\n\n실제로는 저는 다음과 같은 _quarto.yml을 작성했습니다.\nproject:\n  type: website\n  preview:\n    port: 4200\n\nwebsite:\n  title: \"junwkim's blog\"\n  description: \"technical writing about CS/CE\"\n  navbar:\n    background: \"#0a3e3c\"\n    foreground: White\n    left:\n      - href: pages/introduce.qmd\n        text: introduce\n    right:\n      - href: main.qmd\n        text: Back To Home\n\nformat:\n  html:\n    css: styles.css\n    js: script.js\n위 yaml 파일에서 명시하는 것은 다음과 같습니다.\n\n페이지의 이름은 “junkim’s blog” 일 것\nNavigation Bar 설정\n\nNavigation Bar의 색상은 Dark Teal(#0a3e3c) 일것\nintroduce page를 왼쪽, Back To Home page를 오른쪽에 둘 것.\n\n\n한편, _quarto.yml 기반으로 동작하는 quarto application은 index.qmd 를 가장 먼저 보도록 설정되어 있습니다. index.qmd 파일은 다음과 같이 작성해주었습니다.\n---\npagetitle: \"Home\"\n---\n\n```{=html}\n&lt;meta http-equiv=\"refresh\" content=\"0; url='./main.html'\" /&gt;\nindex.qmd에서는 홈의 가장 기본으로 바라보는 페이지가 main.qmd에서 그려주는 형상이 되도록 지정했습니다. 따라서 블로그의 어디에서든 홈에 접속한다면 main.qmd가 그려주는 페이지로 진입하게 됩니다.\n\n\n\nhome main page\n\n\n\n\n세부 화면 구성\n보시면 아시겠지만, 지금 보는 화면은 저희가 작성한 것보다는 좀더 많은 내용들이 추가가 되어 있습니다. 먼저 introduce라는 페이지를 구성하겠습니다.\n---\ntitle: \"\"\nformat:\n  html:\n    toc: false\n---\n\n## 소개글\n안녕하세요. 제 이름은 김준우입니다.\n서울/경기권에 거주하고 있고, 현재는 Machine Learning Engineer로 Gmarket에서 근무하고 있습니다. AI/ML 알고리즘과 엔지니어링 요소를 활용하여 세상에 유용한 application을 제공하는데에 관심이 있습니다.\n이렇게 작성한 마크다운 문법은 다음과 같이 나타납니다. \n이어서, 홈화면에 나타난 카드 횡스크롤 방식의 UI를 구현해보겠습니다. 요즘 넷플릭스처럼 콘텐츠를 가로로 스크롤하며 제공해주는 방식의 UI가 매우 유행하고 있습니다. 제가 생각하기로는 콘텐츠가 아주 많아진 요즘 시대에는 거의 필수에 가까울 것으로 생각되는 디자인 요소 중 하나라고 생각합니다.\nQuarto에서는 내가 작성한 게시글들이라는 콘텐츠를 Listing해서 보여주는 기능이 있습니다. 홈페이지에서 제공하는 document에서 다양한 형식의 quarto content 작성방식을 제공하고 있습니다.\n\nhttps://quarto.org/docs/reference/projects/websites.html#project\n\n위 링크에서 Listing 항목을 살펴보면 어떤 콘텐츠를 담을 것인지, List의 이름은 무엇으로 할 것인지, 최대로 보여줄 콘텐츠의 갯수, 정렬방식을 지정할 수 있음을 알 수 있습니다. 특히, type 항목에서 List 혹은 Grid를 지정할 수 있습니다. 물론 List와 Grid 또한 충분히 이쁜 UI지만 저희가 하고 싶은 것은 횡스크롤 형식의 카드UI입니다.\nlisting:\n    - id: \"list1\"\n      contents: pages/posts\n      sort: \"date asc\"\n      type: custom\n      categories: false\n      sort-ui: false\n      filter-ui: false\n      feed: false\n      template: listing.ejs\n저는 실제로는 문서정독을 통해 EJS(Embedded JavaScript)라는 기능을 통해 사용자가 직접 정의한 UI를 입힐 수 있음을 파악했지만, 갖은 노력을 다해도 도저히 구현할 수 없었습니다. 그래서 Claude에게 다시한번 물어보았습니다. Claude는 EJS 문법 작성과 CSS파일 생성을 거의 대부분 수행하였지만, 사소한 오류와 에러들이 있었고 이를 바로 잡는데에 대부분의 시간을 보냈습니다.\n\n\n\nclaude도 디버깅을 잘 못할 수 있다.\n\n\n현존 GPTs 서비스 중 가장 강력하다고 알려진 Claude 또한 이미지 입력까지 제공받았음에도 유료 API Quoto를 3번이나 소진할 떄까지 올바른 방법을 제시하지 못했습니다. 그러던 중 클로드가 다음과 같은 제안을 해왔습니다.\n\nstyle.css\n\n.card-container {\n  display: flex;\n  overflow-x: auto;\n  scroll-snap-type: x mandatory;\n  scroll-padding: 1rem;\n}\n\n.card {\n  flex: 0 0 200px;\n  margin-right: 1rem;\n  padding: 1rem;\n  background: #f1f1f1;\n  border-radius: 5px;\n  scroll-snap-align: center;\n  text-decoration: none;\n  color: inherit;\n  display: flex;\n  flex-direction: column;\n}\n\n.card h3 {\n  margin: 0;\n}\n\nlisting.ejs\n\n&lt;div class=\"card-container\"&gt;\n&lt;% for (const post of collections.all.pages/posts) { %&gt;\n  &lt;a href=\"&lt;%= post.url %&gt;\" class=\"card\"&gt;\n    &lt;h3&gt;&lt;%= post.data.title %&gt;&lt;/h3&gt;\n  &lt;/a&gt;\n&lt;% } %&gt;\n&lt;/div&gt;\n위 코드를 적용하자, 드디어 초기에 제가 원하던 컨셉과 비슷한 화면 view가 생성되었습니다! \n한번 기능이 완성되고 나서부터는 원하는 UI를 구현하는 것은 비교적 빠르게 수행 가능했습니다. 사소한 디버깅이나 레이아웃을 수정하는 오류는 claude를 통해 해결하였고, 추가적인 style 변화를 위해 몇가지 요소를 추가했습니다.\n.card-container {\n  display: flex;\n  overflow-x: auto;\n  scroll-snap-type: x mandatory;\n  scroll-padding: 1rem;\n}\n\n.card {\n  width: 200px;\n  height: 265px;\n  margin-right: 1rem;\n  padding: 1rem;\n  background: #e0f2ef;\n  border-radius: 5px;\n  scroll-snap-align: center;\n  text-decoration: none;\n  color: inherit;\n  display: flex;\n  flex-direction: column;\n  box-sizing: border-box;\n  position: relative;\n}\n\n.card-text {\n  display: -webkit-box;\n  -webkit-line-clamp: 3;\n  -webkit-box-orient: vertical;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  word-break: break-word;\n  line-height: 1.2;\n  max-height: calc(1.2em * 3);\n  margin: 0.5rem;\n}\n\n.card-image {\n  width: 100%;\n  height: 160px;\n  marin: 1rem;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  border: 1px solid #e0e0e0;\n}\n적용한 카드 스타일은 다음과 같습니다.\n\ncard container를 통해 횡 scroll UI를 구현\ncard style 정의를 통해 가로/세로 높이와 카드 배경색 조정, 테두리 둥근 효과 등을 부여\ncard-text style 정의를 통해 카드 내부의 text는 어떤 높이에서 시작하고 어디까지 표시될지, 표시영역을 벗어나면 어떻게 처리될지를 정의\ncard-image style 정의를 통해 카드 내부에 이미지가 표기되도록 하고, 해당 이미지의 여러 특성을 정의\n\n\n\n정리하며\n이러한 작업을 하면서 놀라운 부분은, 저는 프론트에 대해서는 아주 기본적인 내용들만 알고 있었을 뿐임에도 Claude와 함께 상호작용하며 저만의 멋진 블로그를 만드는데에 그렇게 큰 힘이 들지 않았다는 것입니다. 뿐만 아니라, 제가 작성한 대부분의 코드는 Claude가 생성해 준 것이고 제가 고려한 부분은 디자인적 요소 외에는 거의 없었다고 봐도 무방할 것 같습니다.\n만약 이 글을 읽으시는 독자분께서 블로그는 갖고 싶지만 프론트를 잘 모르신다고 한다면, Claude를 기반으로 아주 맨땅에서부터 헤딩해도 좋은 결과물을 얻을 수 있을 것이라 생각합니다. 끝으로, 여태까지 작업한 코드는 다음 github에서 참고하실 수 있습니다.\n\nhttps://github.com/junwoo-ctrl/junwkim-blog-quarto"
-  },
-  {
-    "objectID": "main.html",
-    "href": "main.html",
-    "title": "junwkim's blog",
-    "section": "",
-    "text": "technical writing\n\n\n  Working In Progess Junwoo Kim, Nov 11, 1111 \n\n\nNo matching items\n\n\n\nPapers\n\n\n  RAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task. Junwoo Kim, Dec 27, 2023 \n  DrQA: Reading Wikipedia to Answer Open-Domain Questions Junwoo Kim, Dec 24, 2023 \n\n\nNo matching items\n\n\n\nPosts\n\n\n  GPTs Service로 개인블로그 만들기 Junwoo Kim, Mar 4, 2024 \n\n\nNo matching items"
-  },
-  {
-    "objectID": "pages/introduce.html",
-    "href": "pages/introduce.html",
-    "title": "junwkim's blog",
-    "section": "",
-    "text": "안녕하세요. 제 이름은 김준우입니다. 서울/경기권에 거주하고 있고, 현재는 Machine Learning Engineer로 Gmarket에서 근무하고 있습니다. AI/ML 알고리즘과 엔지니어링 요소를 활용하여 세상에 유용한 application을 제공하는데에 관심이 있습니다."
-  },
-  {
-    "objectID": "pages/introduce.html#소개글",
-    "href": "pages/introduce.html#소개글",
-    "title": "junwkim's blog",
-    "section": "",
-    "text": "안녕하세요. 제 이름은 김준우입니다. 서울/경기권에 거주하고 있고, 현재는 Machine Learning Engineer로 Gmarket에서 근무하고 있습니다. AI/ML 알고리즘과 엔지니어링 요소를 활용하여 세상에 유용한 application을 제공하는데에 관심이 있습니다."
-  },
-  {
-    "objectID": "pages/introduce.html#career",
-    "href": "pages/introduce.html#career",
-    "title": "junwkim's blog",
-    "section": "Career",
-    "text": "Career\n\nMakinarocks(Machine Learning Engineer)\n\n2020.01 - 2021.07 (Seoul)\n태양광 발전량 예측 프로젝트(SK 계열사 협업프로젝트)\n\n일기예보 데이터 분석\nRegression 기반 모델개발(Tree Based, NN Based)\n\n발전량 예측서비스 개발\n\nAWS EKS 기반 SaaS 개발\n\n\n\n\nMusinsa(Search Engineer)\n\n2021.08 - 2022.07 (Seoul)\n이미지 검색서비스 개발\n\n기 사용 Solution을 Internal로 전환하여 비용절감\nObject Detection, Classification, Vector Embedding 모델 개발\nElasticsearch 기반 vector 검색 및 Airflow Pipeline 개발\nAWS EKS를 활용한 Microservice 개발\n\n연관검색어 추천기능 개발\n\n검색결과가 없는 페이지(SNR)에서의 UX 지표개선\nFast-Text 기반 vector embedidng 모델개발\nContinuous Training / Update 가능한 Airflow Pipeline 개발\n연관검색결과를 제공하는 Internal API Server 개발\n\n팀내 Python Convention 및 Data 분석 Lead\n\n\n\nGmarket(Machine Learning Engineer)\n\n2022.08 - Present\n홈개인화 서비스개발\n\n비개인화 유저대상 GMV 26% 개선\nPhase 1(tag 검색기반 개인화)\n\nlong/short term 유저행동을 기반으로 Tag 추출\nElasticsearch에 적재된 상품풀에 검색하여 ranking되는 상품리스트 제공\nElasticsearch Query Tunning 및 Spring API Server 개발\n\nPhase 2(vector 검색기반 semantic 개인화)\n\n전문검색(Full-Text) 기반 개인화의 상품 편중현상 해결\nNext Step Item을 예측하는 Transformer 기반의 vector model 개발\nElasticsearch 기반 vector 검색 및 Airflow Pipeline 개발\nCPU 추론 최적화를 통한 GPU 자원절약\n\nPhase 3(re-ranking을 통한 micro 개인화)\n\n개인화된 ranking 제공 이후, User Action에 따른 Optimized Ranking 제공 및 Filter Bubble 해결\nItem Score / User Score 집계 후, 합산계산하는 방식의 Re-Ranking list 제공"
-  },
-  {
-    "objectID": "pages/papers.html",
-    "href": "pages/papers.html",
-    "title": "junwkim's blog",
-    "section": "",
-    "text": "DrQA: Reading Wikipedia to Answer Open-Domain Questions\n\n\nODQA의 시작점이 되는 논문을 소개합니다.\n\n\n\nJunwoo Kim\n\n\nDec 24, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task.\n\n\nLLM이 가진 약점을 타파하려는 현시점 가장 유의미한 시도를 정리합니다.\n\n\n\nJunwoo Kim\n\n\nDec 27, 2023\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "pages/posts.html",
-    "href": "pages/posts.html",
-    "title": "junwkim's blog",
-    "section": "",
-    "text": "GPTs Service로 개인블로그 만들기\n\n\nClaude3만으로 Quarto 기반 블로그 만들기\n\n\n\nJunwoo Kim\n\n\nMar 4, 2024\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "pages/papers/RAG.html",
-    "href": "pages/papers/RAG.html",
-    "title": "Retrieval Augmented Generation",
-    "section": "",
-    "text": "Working In Progess"
-  },
-  {
     "objectID": "pages/papers/DrQA/DrQA.html",
     "href": "pages/papers/DrQA/DrQA.html",
     "title": "DrQA: Reading Wikipedia to Answer Open-Domain Questions",
@@ -112,6 +35,55 @@
     "text": "Related Work\nOpen-Domain QA는 원래 구조화되지 않은 수집된 문서들에 대해 답변된 TREC competition으로부터 유래했다. KnowledgeBased의 발전에 따라 QA를 잘하려는 많은 시도들이 있어왔지만, 대부분 KBs의 근본적인 한계(incompleteness, fixed schemas)를 극복하지 못해 결국은 raw text로부터 곧바로 answering을 수행하는 방향으로 선회되었다.\nmachine comprehension에 관한 두번째 motivation은 기계가 짧은 text 혹은 story를 듣고 난 후에 답변하는 것이다. 이러한 접근방법은 attention based 그리고 memory augmented neural network 등의 딥러닝 아키텍쳐 연구와 함께 진행되었다. 이런 방향의 연구들은 open-domain QA task에서 좋은 성능과 새로운 framework들을 제안해왔다.\n한편, Wikipedia를 활용한 연구에서는 대부분 구조화된 Knowledge Base Model이 주를 이루었는데, 이러한 방식들은 미리 문서로부터 접근가능한 sub-text 등을 뽑고 카테고리와 같은 여러가지 pattern들을 미리 준비시켜놓는 방식이었다.\nDrQA는 오로지 주어진 text에 대해서만 고려하며, Wikipedia text documents는 오로지 MRS에 보조되는 용도로만 고려한다.\n그 외에도 AskMSR(MS), DeepQA(IBM) 등 QA Pipeline을 구축하는 관점에서의 연구들은 대부분 KnowledgeBase를 활용한 검색시스템 구축 관점에서의 연구성과이지 온전하게 text comprehension을 바탕으로 한 QA시스템으로 보기는 어려웠다.\n\nDocument Retriever\nClassical QA system을 따라 machine learning을 사용하지 않는 document retrieval system을 사용한다. document retriever는 어느정도 유의미한 articles을 찾아서 돌려준다. 보통 inverted index를 바라보고 각 term에 대한 vector scoring model을 통해 점수를 계산하여 질문에 대한 답변을 찾는다. 이러한 작업은 Wikipedia 내장 Search API인 Elastic- search에서도 잘 동작한다. Qustion과 Articles는 TF-IDF weighted bag-of-words vectors로 비교된다.\n또한 여기서 더 나아가 local word에 대한 n-gram features를 통해 더 나은 성능을 보였다. Feature hashing for large scale multitask learning 논문에서 제안하는 hashing 방법과 bigram을 통해 메모리 효율적이고 속도도 향상된 시스템을 개발했다.\nDrQA에서 개발된 document retriever는 5개의 wikipedia articles를 반환하도록 설정되었다. 이렇게 검색된 document는 document reader에 의해 처리된다.\n\n\nDocument Reader\nDocument Retriever는 machine comprehension task에서 큰 성공을 거든 AttentiveReader의 구조를 차용한 neural network로 구성된다. document retreiver의 정의는 다음과 같다.\n\n주어진 quesetion q를 구성하는 \\(l\\) tokens를 \\(\\{q_1, ..., q_l\\}\\)로 한다.\nsmall set of documents의 \\(n\\) paragraphs 중에서 하나를 선택한 paragraphs \\(p\\)를 구성하는 \\(m\\) tokens를 \\(\\{p_1, ..., p_m\\}\\)으로 한다.\n\nRNN Model은 각 paragraph를 입력으로 받아 나온 출력을 aggregate하여 answer를 predict하는 task를 수행한다. 좀 더 구체화하여 나눠서 정의하면 다음과 같다.\n\nParagraph Encoding\n모든 토큰 p_i를 d차원의 sequence of feature vector인 \\(p^{~}_{i}\\)로 RNN을 통과시켜 생성한다.\n\\({p_1, ... , p_m} = RNN({p˜1, . . . , p˜m})\\)\nparagraph bold pi는 token pi로부터 유의미한 정보들을 가진 context information으로 압축된다. 이때, multi-layer bidirectional lstm을 사용하여 각 layer들의 end hidden units의 출력값을 취합한다. 이렇게 생성된 feature vector p~i는 다음과 같이 구성된다.\n\n\nWord Embeddings\n300차원의 Glove word embedding을 사용한다. 대부분의 word embedding은 고정하고, 1000여개 정도의 most frequent question words에 대해서만 fine-tune what, how, which, many 등의 단어는 QA System에서는 매우 치명적이고 중요하기 때문\n\n\nExact Match\n\\(f_{exact\\_match}(pi) = I(pi ∈ q).\\)\n3개의 simple한 binary features를 사용했는데, pi(토큰)이 질문에 들어있는 단어인지, lower-case문자인지, 혹은 lemma form(유사한뜻)인지 여부에 따라 표기한다. 이러한 feature의 사용은 매우 강력하고 Section 5에서 살펴볼것.\n\n\nToken Features\n\\(f_{token}(pi) = (POS(pi), NER(pi), TF(pi)).\\)\ntoken p{i}의 일부 속성을 반영하는 몇가지 feature를 추가한다. 품사(Part Of Speeach, POS), NER(Name Entity Recognition), 용어빈도 TF(Term Frequency) 등이다.\n\n\nAligned Question Embedding\nDrQA 작성당시의 논문추세로, question embedding을 할당한다.\n\\(f_{align}(pi) = \\Sigma_{j} a_{i,j} E(q_{j})\\) 로 표현되며, attention score \\(a_{i,j}\\)는 paragraph token pi와 each question words \\(q_j\\)의 similarity로 동작한다.\n\\(a_{i,j}\\) score는 dot-products로 계산되어 비선형적인 word embedding으로 구성된다.\n\n\n\nAligned Question Embedding\n\n\n위 식에서 알파는 ReLU를 포함한 single dense layer이다. 이런식으로 학습하면 비슷하지만 Non-identical words를 학습하는데에 도움이 된다.(car & vehicle)\n\n\n\nPrediction\nParagraph Level에서, 우리의 목표는 가장 정답과 근사한 span of tokens를 예측하는 것이다. 우리는 Paragraph vectors {p1, . . . , pm}과 question vector q를 입력으로 가지고 있고, 두개의 classifier를 통해 두개의 ends of the span을 예측하도록 독립적으로 학습한다."
   },
   {
+    "objectID": "pages/introduce.html",
+    "href": "pages/introduce.html",
+    "title": "junwkim's blog",
+    "section": "",
+    "text": "안녕하세요. 제 이름은 김준우입니다. 서울/경기권에 거주하고 있고, 현재는 Machine Learning Engineer로 Gmarket에서 근무하고 있습니다. AI/ML 알고리즘과 엔지니어링 요소를 활용하여 세상에 유용한 application을 제공하는데에 관심이 있습니다."
+  },
+  {
+    "objectID": "pages/introduce.html#소개글",
+    "href": "pages/introduce.html#소개글",
+    "title": "junwkim's blog",
+    "section": "",
+    "text": "안녕하세요. 제 이름은 김준우입니다. 서울/경기권에 거주하고 있고, 현재는 Machine Learning Engineer로 Gmarket에서 근무하고 있습니다. AI/ML 알고리즘과 엔지니어링 요소를 활용하여 세상에 유용한 application을 제공하는데에 관심이 있습니다."
+  },
+  {
+    "objectID": "pages/introduce.html#career",
+    "href": "pages/introduce.html#career",
+    "title": "junwkim's blog",
+    "section": "Career",
+    "text": "Career\n\nMakinarocks(Machine Learning Engineer)\n\n2020.01 - 2021.07 (Seoul)\n태양광 발전량 예측 프로젝트(SK 계열사 협업프로젝트)\n\n일기예보 데이터 분석\nRegression 기반 모델개발(Tree Based, NN Based)\n\n발전량 예측서비스 개발\n\nAWS EKS 기반 SaaS 개발\n\n\n\n\nMusinsa(Search Engineer)\n\n2021.08 - 2022.07 (Seoul)\n이미지 검색서비스 개발\n\n기 사용 Solution을 Internal로 전환하여 비용절감\nObject Detection, Classification, Vector Embedding 모델 개발\nElasticsearch 기반 vector 검색 및 Airflow Pipeline 개발\nAWS EKS를 활용한 Microservice 개발\n\n연관검색어 추천기능 개발\n\n검색결과가 없는 페이지(SNR)에서의 UX 지표개선\nFast-Text 기반 vector embedidng 모델개발\nContinuous Training / Update 가능한 Airflow Pipeline 개발\n연관검색결과를 제공하는 Internal API Server 개발\n\n팀내 Python Convention 및 Data 분석 Lead\n\n\n\nGmarket(Machine Learning Engineer)\n\n2022.08 - Present\n홈개인화 서비스개발\n\n비개인화 유저대상 GMV 26% 개선\nPhase 1(tag 검색기반 개인화)\n\nlong/short term 유저행동을 기반으로 Tag 추출\nElasticsearch에 적재된 상품풀에 검색하여 ranking되는 상품리스트 제공\nElasticsearch Query Tunning 및 Spring API Server 개발\n\nPhase 2(vector 검색기반 semantic 개인화)\n\n전문검색(Full-Text) 기반 개인화의 상품 편중현상 해결\nNext Step Item을 예측하는 Transformer 기반의 vector model 개발\nElasticsearch 기반 vector 검색 및 Airflow Pipeline 개발\nCPU 추론 최적화를 통한 GPU 자원절약\n\nPhase 3(re-ranking을 통한 micro 개인화)\n\n개인화된 ranking 제공 이후, User Action에 따른 Optimized Ranking 제공 및 Filter Bubble 해결\nItem Score / User Score 집계 후, 합산계산하는 방식의 Re-Ranking list 제공"
+  },
+  {
+    "objectID": "main.html",
+    "href": "main.html",
+    "title": "junwkim's blog",
+    "section": "",
+    "text": "technical writing\n\n\n  Working In Progess Junwoo Kim, Nov 11, 1111 \n\n\nNo matching items\n\n\n\nPapers\n\n\n  RAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task. Junwoo Kim, Dec 27, 2023 \n  DrQA: Reading Wikipedia to Answer Open-Domain Questions Junwoo Kim, Dec 24, 2023 \n\n\nNo matching items\n\n\n\nPosts\n\n\n  GPTs Service로 개인블로그 만들기 Junwoo Kim, Mar 4, 2024 \n\n\nNo matching items"
+  },
+  {
+    "objectID": "pages/posts/gpt_base_blog.html",
+    "href": "pages/posts/gpt_base_blog.html",
+    "title": "GPTs Service로 개인블로그 만들기",
+    "section": "",
+    "text": "오랫동안 notion, confluence wiki 등 많은 블로그 서비스를 시도해 왔습니다. 어떤 도구는 지나치게 자유도가 높고 어떤 도구는 자유도가 낮은 대신 많은 기능을 제공했지만, 오히려 그게 불편해져서 그 중간 사이 어딘가의 포스팅 도구를 찾았습니다.\n마침 같은 팀에서 근무하는 분이 Quarto를 추천해주셨고, 이를 활용해 블로그를 개발할 때 Claude3(Opus, Sonnet)을 적극적으로 사용했는데 아마도 직접적으로 프론트업계에 종사하지 않는 엔지니어/과학자 분들에게 도움이 될까 싶어 그 과정을 남깁니다."
+  },
+  {
+    "objectID": "pages/posts/gpt_base_blog.html#개요",
+    "href": "pages/posts/gpt_base_blog.html#개요",
+    "title": "GPTs Service로 개인블로그 만들기",
+    "section": "",
+    "text": "오랫동안 notion, confluence wiki 등 많은 블로그 서비스를 시도해 왔습니다. 어떤 도구는 지나치게 자유도가 높고 어떤 도구는 자유도가 낮은 대신 많은 기능을 제공했지만, 오히려 그게 불편해져서 그 중간 사이 어딘가의 포스팅 도구를 찾았습니다.\n마침 같은 팀에서 근무하는 분이 Quarto를 추천해주셨고, 이를 활용해 블로그를 개발할 때 Claude3(Opus, Sonnet)을 적극적으로 사용했는데 아마도 직접적으로 프론트업계에 종사하지 않는 엔지니어/과학자 분들에게 도움이 될까 싶어 그 과정을 남깁니다."
+  },
+  {
+    "objectID": "pages/posts/gpt_base_blog.html#quarto-소개",
+    "href": "pages/posts/gpt_base_blog.html#quarto-소개",
+    "title": "GPTs Service로 개인블로그 만들기",
+    "section": "Quarto 소개",
+    "text": "Quarto 소개\nQuarto 데이터 사이언스 홈페이지에서는\n“Quarto 는 Pandoc에 기반한 오픈소스 과학기술 출판시스템이다. 하지만 특정 언어에 종속되지 않고 R, 파이썬, 쥴리아, 자바스크립트(Observable JS) 를 지원하고 있으며 이를 통해 다음 출판 저작물 작성이 가능하다.”\n라고 설명하고 있습니다. 개인적으로는 깔끔한 Layout을 제공하고, 마크다운 문법을 기반으로 동작하며 필요시에는 어렵지 않게 커스터마이징 할 수 있다는게 가장 큰 장점으로 생각합니다.\n\nInstall\nQuarto 홈페이지에 들어가서 Get Started 탭을 누르면 자신의 환경에 따라 설치할 수 있는 가이드를 제시해줍니다. 구글링으로 검색하면 여러가지 terminal command를 제시해주지만 해당 문서에서 가이드하는대로 시도하는게 가장 좋습니다. 저는 MacOS 유저이고, 터미널에서 vanilla vim으로 작업을 좋아하기 때문에 Quarto를 설치하기만 했습니다.\n\nhttps://quarto.org/docs/get-started/\n\n\n\n첫 화면\nQuarto를 사용하면 가장 먼저 _quarto.yaml을 작성해야합니다. 사실 글 제목인 Claude에게 물었을 때는 main.qmd를 먼저 작성하라고 안내해줬지만, 지금 작업하는 것이 웹페이지로 배포하기 위함이라는 사실을 인지시켜주면 다음과 같이 답변해줍니다.\n\n\n\nhow to build quarto website blog?\n\n\n실제로는 저는 다음과 같은 _quarto.yml을 작성했습니다.\nproject:\n  type: website\n  preview:\n    port: 4200\n\nwebsite:\n  title: \"junwkim's blog\"\n  description: \"technical writing about CS/CE\"\n  navbar:\n    background: \"#0a3e3c\"\n    foreground: White\n    left:\n      - href: pages/introduce.qmd\n        text: introduce\n    right:\n      - href: main.qmd\n        text: Back To Home\n\nformat:\n  html:\n    css: styles.css\n    js: script.js\n위 yaml 파일에서 명시하는 것은 다음과 같습니다.\n\n페이지의 이름은 “junkim’s blog” 일 것\nNavigation Bar 설정\n\nNavigation Bar의 색상은 Dark Teal(#0a3e3c) 일것\nintroduce page를 왼쪽, Back To Home page를 오른쪽에 둘 것.\n\n\n한편, _quarto.yml 기반으로 동작하는 quarto application은 index.qmd 를 가장 먼저 보도록 설정되어 있습니다. index.qmd 파일은 다음과 같이 작성해주었습니다.\n---\npagetitle: \"Home\"\n---\n\n```{=html}\n&lt;meta http-equiv=\"refresh\" content=\"0; url='./main.html'\" /&gt;\nindex.qmd에서는 홈의 가장 기본으로 바라보는 페이지가 main.qmd에서 그려주는 형상이 되도록 지정했습니다. 따라서 블로그의 어디에서든 홈에 접속한다면 main.qmd가 그려주는 페이지로 진입하게 됩니다.\n\n\n\nhome main page\n\n\n\n\n세부 화면 구성\n보시면 아시겠지만, 지금 보는 화면은 저희가 작성한 것보다는 좀더 많은 내용들이 추가가 되어 있습니다. 먼저 introduce라는 페이지를 구성하겠습니다.\n---\ntitle: \"\"\nformat:\n  html:\n    toc: false\n---\n\n## 소개글\n안녕하세요. 제 이름은 김준우입니다.\n서울/경기권에 거주하고 있고, 현재는 Machine Learning Engineer로 Gmarket에서 근무하고 있습니다. AI/ML 알고리즘과 엔지니어링 요소를 활용하여 세상에 유용한 application을 제공하는데에 관심이 있습니다.\n이렇게 작성한 마크다운 문법은 다음과 같이 나타납니다. \n이어서, 홈화면에 나타난 카드 횡스크롤 방식의 UI를 구현해보겠습니다. 요즘 넷플릭스처럼 콘텐츠를 가로로 스크롤하며 제공해주는 방식의 UI가 매우 유행하고 있습니다. 제가 생각하기로는 콘텐츠가 아주 많아진 요즘 시대에는 거의 필수에 가까울 것으로 생각되는 디자인 요소 중 하나라고 생각합니다.\nQuarto에서는 내가 작성한 게시글들이라는 콘텐츠를 Listing해서 보여주는 기능이 있습니다. 홈페이지에서 제공하는 document에서 다양한 형식의 quarto content 작성방식을 제공하고 있습니다.\n\nhttps://quarto.org/docs/reference/projects/websites.html#project\n\n위 링크에서 Listing 항목을 살펴보면 어떤 콘텐츠를 담을 것인지, List의 이름은 무엇으로 할 것인지, 최대로 보여줄 콘텐츠의 갯수, 정렬방식을 지정할 수 있음을 알 수 있습니다. 특히, type 항목에서 List 혹은 Grid를 지정할 수 있습니다. 물론 List와 Grid 또한 충분히 이쁜 UI지만 저희가 하고 싶은 것은 횡스크롤 형식의 카드UI입니다.\nlisting:\n    - id: \"list1\"\n      contents: pages/posts\n      sort: \"date asc\"\n      type: custom\n      categories: false\n      sort-ui: false\n      filter-ui: false\n      feed: false\n      template: listing.ejs\n저는 실제로는 문서정독을 통해 EJS(Embedded JavaScript)라는 기능을 통해 사용자가 직접 정의한 UI를 입힐 수 있음을 파악했지만, 갖은 노력을 다해도 도저히 구현할 수 없었습니다. 그래서 Claude에게 다시한번 물어보았습니다. Claude는 EJS 문법 작성과 CSS파일 생성을 거의 대부분 수행하였지만, 사소한 오류와 에러들이 있었고 이를 바로 잡는데에 대부분의 시간을 보냈습니다.\n\n\n\nclaude도 디버깅을 잘 못할 수 있다.\n\n\n현존 GPTs 서비스 중 가장 강력하다고 알려진 Claude 또한 이미지 입력까지 제공받았음에도 유료 API Quoto를 3번이나 소진할 떄까지 올바른 방법을 제시하지 못했습니다. 그러던 중 클로드가 다음과 같은 제안을 해왔습니다.\n\nstyle.css\n\n.card-container {\n  display: flex;\n  overflow-x: auto;\n  scroll-snap-type: x mandatory;\n  scroll-padding: 1rem;\n}\n\n.card {\n  flex: 0 0 200px;\n  margin-right: 1rem;\n  padding: 1rem;\n  background: #f1f1f1;\n  border-radius: 5px;\n  scroll-snap-align: center;\n  text-decoration: none;\n  color: inherit;\n  display: flex;\n  flex-direction: column;\n}\n\n.card h3 {\n  margin: 0;\n}\n\nlisting.ejs\n\n&lt;div class=\"card-container\"&gt;\n&lt;% for (const post of collections.all.pages/posts) { %&gt;\n  &lt;a href=\"&lt;%= post.url %&gt;\" class=\"card\"&gt;\n    &lt;h3&gt;&lt;%= post.data.title %&gt;&lt;/h3&gt;\n  &lt;/a&gt;\n&lt;% } %&gt;\n&lt;/div&gt;\n위 코드를 적용하자, 드디어 초기에 제가 원하던 컨셉과 비슷한 화면 view가 생성되었습니다! \n한번 기능이 완성되고 나서부터는 원하는 UI를 구현하는 것은 비교적 빠르게 수행 가능했습니다. 사소한 디버깅이나 레이아웃을 수정하는 오류는 claude를 통해 해결하였고, 추가적인 style 변화를 위해 몇가지 요소를 추가했습니다.\n.card-container {\n  display: flex;\n  overflow-x: auto;\n  scroll-snap-type: x mandatory;\n  scroll-padding: 1rem;\n}\n\n.card {\n  width: 200px;\n  height: 265px;\n  margin-right: 1rem;\n  padding: 1rem;\n  background: #e0f2ef;\n  border-radius: 5px;\n  scroll-snap-align: center;\n  text-decoration: none;\n  color: inherit;\n  display: flex;\n  flex-direction: column;\n  box-sizing: border-box;\n  position: relative;\n}\n\n.card-text {\n  display: -webkit-box;\n  -webkit-line-clamp: 3;\n  -webkit-box-orient: vertical;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  word-break: break-word;\n  line-height: 1.2;\n  max-height: calc(1.2em * 3);\n  margin: 0.5rem;\n}\n\n.card-image {\n  width: 100%;\n  height: 160px;\n  marin: 1rem;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  border: 1px solid #e0e0e0;\n}\n적용한 카드 스타일은 다음과 같습니다.\n\ncard container를 통해 횡 scroll UI를 구현\ncard style 정의를 통해 가로/세로 높이와 카드 배경색 조정, 테두리 둥근 효과 등을 부여\ncard-text style 정의를 통해 카드 내부의 text는 어떤 높이에서 시작하고 어디까지 표시될지, 표시영역을 벗어나면 어떻게 처리될지를 정의\ncard-image style 정의를 통해 카드 내부에 이미지가 표기되도록 하고, 해당 이미지의 여러 특성을 정의\n\n\n\n정리하며\n이러한 작업을 하면서 놀라운 부분은, 저는 프론트에 대해서는 아주 기본적인 내용들만 알고 있었을 뿐임에도 Claude와 함께 상호작용하며 저만의 멋진 블로그를 만드는데에 그렇게 큰 힘이 들지 않았다는 것입니다. 뿐만 아니라, 제가 작성한 대부분의 코드는 Claude가 생성해 준 것이고 제가 고려한 부분은 디자인적 요소 외에는 거의 없었다고 봐도 무방할 것 같습니다.\n만약 이 글을 읽으시는 독자분께서 블로그는 갖고 싶지만 프론트를 잘 모르신다고 한다면, Claude를 기반으로 아주 맨땅에서부터 헤딩해도 좋은 결과물을 얻을 수 있을 것이라 생각합니다. 끝으로, 여태까지 작업한 코드는 다음 github에서 참고하실 수 있습니다.\n\nhttps://github.com/junwoo-ctrl/junwkim-blog-quarto"
+  },
+  {
     "objectID": "pages/papers/RAG/RAG.html",
     "href": "pages/papers/RAG/RAG.html",
     "title": "RAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task.",
@@ -119,25 +91,11 @@
     "text": "일반적으로 LLM은 방대한 양의 데이터를 기반으로 사전학습(Pre-Trained)된 GPT Based Model을 의미한다. GPT는 Next-Token-Prediction을 수행하는 Pretraining 과정을 거치며 자연어 테스크들에서 유의미한 성과들을 보여왔다.\nLLM을 활용하려는 시도 중 하나는 LLM에 질문을 하고 올바른(품질이 좋은) 답변을 얻는 것이다. 이러한 분야를 Open-Domain Question Answering(ODQA)라고 정의한다. 따라서 ODQA에서는 input text를 question으로, output text를 answer로 하는 Framework로 정의한다.\n\n\n\n\n\ngraph LR\nA[Who was Cleopatra?] --&gt; B[LLM]\nB --&gt; C[Cleopatra was a famous Egyptian queen.]\n\nstyle A fill:#fff,stroke:#000,color:#000\nstyle B fill:#fff,stroke:#000,color:#000\nstyle C fill:#fff,stroke:#000,color:#000\nlinkStyle 0 stroke:#000, stroke-width:1px, stroke-linecap:butt;\nlinkStyle 1 stroke:#000, stroke-width:1px, stroke-linecap:square;\n\n\n\n\n\n\n질문을 입력하면 답변을 생성한다는 점에서 LLM을 QA Task에서 생성하는 것이 굉장히 주목을 받게 되었다. 그런데 답변을 생성해내는 것까지는 좋은 일인데, LLM에 아주 잘못된 입력을 해도 그럴듯하게 답변을 생성해내는 Hallucination 현상이 대두되었다.\n\n\n\n\n\ngraph LR\nA[Who is the brave Korean Cleopatra?]\nstyle A fill:#fff,stroke:#000,color:#000\n\nB[LLM]\nstyle B fill:#fff,stroke:#000,color:#000\n\nC[She was a very brave and famous independence activist.]\nstyle C fill:#fff,stroke:#000,color:#000\n\nA --&gt; B\nlinkStyle 0 stroke:#000, stroke-width:1px, stroke-linecap:butt;\n\nB --&gt; C\nlinkStyle 1 stroke:#000, stroke-width:1px, stroke-linecap:butt;\n\n\n\n\n\n\nExample of Hallucination\n또한, QA Task의 용도로 사용하기에는 단편적이고 간단한 답변을 내놓는 경향이 있다. 이러한 단점을 보강하기 위해 한동안은 Hallucination을 피하고 답변의 생성을 도와주기 위해 Context를 붙이는 방식이 선호되었다.\n\n\n\n\n\ngraph LR\nA[Who is the brave Korean Cleopatra?]\nstyle A fill:#fff,stroke:#000,color:#000\n\nB[LLM]\nstyle B fill:#fff,stroke:#000,color:#000\n\nC[She was a very brave and famous independence activist.]\nstyle C fill:#fff,stroke:#000,color:#000\n\nsubgraph Context\nD[We are talking about ancient romain history.]\nstyle D fill:#fff,stroke:#000,color:#000\nend\nstyle Context fill:#fff,stroke:#000,color:#000\n\n\nA --&gt; B\nlinkStyle 0 stroke:#000, stroke-width:1px, stroke-linecap:butt;\n\nB --&gt; C\nlinkStyle 1 stroke:#000, stroke-width:1px, stroke-linecap:butt;\n\nD --&gt; B\nlinkStyle 2 stroke:#000, stroke-width:1px, stroke-linecap:butt;\n\n\n\n\n\n\nContext를 입력 프롬프트에 추가하는 방식이 동작하는 이유는 근본적으로 GPT는 Next Token Prediction을 수행하는 모델이기 때문이다. 앞서 등장한 Token들과 연관이 큰 답변을 생성해야하니 Context를 잘 조절하면 Hallucination을 막는것은 물론 질 좋은 답변을 생성하는 데에도 도움이 된다.\n그러나 세상에 존재하는 Question은 사실상 무한하고, Question마다 의미있는 Context를 생성하는 작업은 무척 비효율적이다. 또한, Knowledge Intensive한 경우 Context를 생성하는 비용 자체가 비싸다는 단점이 있다. RAG(Retrieval Augmented Generation)은 이러한 문제를 해결하기 위해 제시되었다."
   },
   {
-    "objectID": "pages/papers/RAG/RAG.html#large-language-model",
-    "href": "pages/papers/RAG/RAG.html#large-language-model",
-    "title": "RAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task.",
-    "section": "",
-    "text": "일반적으로 LLM은 방대한 양의 데이터를 기반으로 사전학습(Pre-Trained)된 GPT Based Model을 의미한다. GPT는 Next-Token-Prediction을 수행하는 Pretraining 과정을 거치며 자연어 테스크들에서 유의미한 성과들을 보여왔다."
-  },
-  {
     "objectID": "pages/papers/RAG/RAG.html#large-language-model-open-domain-question-answering",
     "href": "pages/papers/RAG/RAG.html#large-language-model-open-domain-question-answering",
     "title": "RAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task.",
     "section": "",
     "text": "일반적으로 LLM은 방대한 양의 데이터를 기반으로 사전학습(Pre-Trained)된 GPT Based Model을 의미한다. GPT는 Next-Token-Prediction을 수행하는 Pretraining 과정을 거치며 자연어 테스크들에서 유의미한 성과들을 보여왔다.\nLLM을 활용하려는 시도 중 하나는 LLM에 질문을 하고 올바른(품질이 좋은) 답변을 얻는 것이다. 이러한 분야를 Open-Domain Question Answering(ODQA)라고 정의한다. 따라서 ODQA에서는 input text를 question으로, output text를 answer로 하는 Framework로 정의한다.\n\n\n\n\n\ngraph LR\nA[Who was Cleopatra?] --&gt; B[LLM]\nB --&gt; C[Cleopatra was a famous Egyptian queen.]\n\nstyle A fill:#fff,stroke:#000,color:#000\nstyle B fill:#fff,stroke:#000,color:#000\nstyle C fill:#fff,stroke:#000,color:#000\nlinkStyle 0 stroke:#000, stroke-width:1px, stroke-linecap:butt;\nlinkStyle 1 stroke:#000, stroke-width:1px, stroke-linecap:square;\n\n\n\n\n\n\n질문을 입력하면 답변을 생성한다는 점에서 LLM을 QA Task에서 생성하는 것이 굉장히 주목을 받게 되었다. 그런데 답변을 생성해내는 것까지는 좋은 일인데, LLM에 아주 잘못된 입력을 해도 그럴듯하게 답변을 생성해내는 Hallucination 현상이 대두되었다.\n\n\n\n\n\ngraph LR\nA[Who is the brave Korean Cleopatra?]\nstyle A fill:#fff,stroke:#000,color:#000\n\nB[LLM]\nstyle B fill:#fff,stroke:#000,color:#000\n\nC[She was a very brave and famous independence activist.]\nstyle C fill:#fff,stroke:#000,color:#000\n\nA --&gt; B\nlinkStyle 0 stroke:#000, stroke-width:1px, stroke-linecap:butt;\n\nB --&gt; C\nlinkStyle 1 stroke:#000, stroke-width:1px, stroke-linecap:butt;\n\n\n\n\n\n\nExample of Hallucination\n또한, QA Task의 용도로 사용하기에는 단편적이고 간단한 답변을 내놓는 경향이 있다. 이러한 단점을 보강하기 위해 한동안은 Hallucination을 피하고 답변의 생성을 도와주기 위해 Context를 붙이는 방식이 선호되었다.\n\n\n\n\n\ngraph LR\nA[Who is the brave Korean Cleopatra?]\nstyle A fill:#fff,stroke:#000,color:#000\n\nB[LLM]\nstyle B fill:#fff,stroke:#000,color:#000\n\nC[She was a very brave and famous independence activist.]\nstyle C fill:#fff,stroke:#000,color:#000\n\nsubgraph Context\nD[We are talking about ancient romain history.]\nstyle D fill:#fff,stroke:#000,color:#000\nend\nstyle Context fill:#fff,stroke:#000,color:#000\n\n\nA --&gt; B\nlinkStyle 0 stroke:#000, stroke-width:1px, stroke-linecap:butt;\n\nB --&gt; C\nlinkStyle 1 stroke:#000, stroke-width:1px, stroke-linecap:butt;\n\nD --&gt; B\nlinkStyle 2 stroke:#000, stroke-width:1px, stroke-linecap:butt;\n\n\n\n\n\n\nContext를 입력 프롬프트에 추가하는 방식이 동작하는 이유는 근본적으로 GPT는 Next Token Prediction을 수행하는 모델이기 때문이다. 앞서 등장한 Token들과 연관이 큰 답변을 생성해야하니 Context를 잘 조절하면 Hallucination을 막는것은 물론 질 좋은 답변을 생성하는 데에도 도움이 된다.\n그러나 세상에 존재하는 Question은 사실상 무한하고, Question마다 의미있는 Context를 생성하는 작업은 무척 비효율적이다. 또한, Knowledge Intensive한 경우 Context를 생성하는 비용 자체가 비싸다는 단점이 있다. RAG(Retrieval Augmented Generation)은 이러한 문제를 해결하기 위해 제시되었다."
-  },
-  {
-    "objectID": "pages/papers/RAG/RAG.html#abstraction",
-    "href": "pages/papers/RAG/RAG.html#abstraction",
-    "title": "RAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task.",
-    "section": "Abstraction",
-    "text": "Abstraction\nLarge pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures.\n\n대규모 사전훈련 모델은 사실적인 정보들을 파라미터에 저장하고, 이를 통해 downstream NLP task에서 state-of-the-art 결과를 보여왔다.\n그런 연구들에서 지식을 정밀하게 조작하고 접근하는 능력은 한계가 있었고, 그러므로 이러한 구조는 knowledge-intensive한 task들에서는 성능저하가 발생했다.\n\nAdditionally, providing provenance for their decisions and updating their world knowledge remain open research problems.\n\n추가적으로, 모델의 decisions에 대한 근거를 제공하거나 새로운 knowledge를 업데이트 하는 것은 여전히 문제로 남아있다"
   },
   {
     "objectID": "pages/papers/RAG/RAG.html#abstract",
@@ -159,5 +117,19 @@
     "title": "RAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task.",
     "section": "Method",
     "text": "Method\nWe explore RAG models, which use the input sequence x to retrieve text documents z and use them as additional context when generating the target sequence y.\n\n우리가 RAG model을 다룰 때, input sequence x에 대해 text document 집합인 z를 검색하고, 이러한 z들을 additional context로 사용하여 target sequence y를 생성하는데에 사용한다.\n\nIn one approach, RAG-Sequence, the model uses the same document to predict each target token. The second approach, RAG-Token, can predict each target token based on a different document. In the following, we formally introduce both models and then describe the pη and pθ components, as well as the training and decoding procedure.\n\ngeneration 단계에서 z를 사용하는 방식에 따라 RAG-Sequence와 RAG-Token 방식으로 구분한다.\nRag-Sequence은 각 token(1개의 output prediction에 사용된)을 예측하기 위해 같은 문서를 사용하고, Rag-Token은 각 token을 예측하기 위해 다른 문서를 사용한다\n\n\nModels\n\nRetriever: DPR \n\\(p_{\\eta}(z|x) \\propto\\ exp \\left(d(z)\\right)^T q(x)\\)\nThe retrieval component pη(z|x) is based on DPR [26]. DPR follows a bi-encoder architecture: where d(z) is a dense representation of a document produced by a BERTBASE document encoder [8], and q(x) a query representation produced by a query encoder, also based on BERTBASE.\n\nRAG의 retriever는 DPR로부터 가져온 것이다.\nDPR은 Bert로 구성된 Bi-Encoder 구조를 가지고 있는데, \\(d(z)\\)는 document를 색인할 벡터 데이터베이스를 생성하는 용도의 encoder이고, \\(q(x)\\)는 입력 쿼리를 encoding하는 용도이다.\nNon-Parametric Memory라고 한다.\n\n\n\nRAG-Sequence\nThe RAG-Sequence model uses the same retrieved document to generate the complete sequence. Technically, it treats the retrieved document as a single latent variable that is marginalized to get the seq2seq probability p(y|x) via a top-K approximation. Concretely, the top K documents are retrieved using the retriever, and the generator produces the output sequence probability for each document, which are then marginalized,\n\\(P_{RAG-Sequence}(y|x) \\approx \\sum_{z \\in top-k(p(\\cdot|x))} p_{\\eta}(z|x)p_{\\theta}(y|x,z) = \\sum_{z \\in top-k(p(\\cdot|x))} p_{\\eta}(z|x) \\prod_{i}^{N} p_{\\theta}(y_{i}|x,z,y_{1:i-1})\\)\n\n1개의 output prediction이 token \\(\\{y_1, ..., y_N\\}\\)로 구성되었다고 가정한다.\n\\(y_i\\)번째 token을 구할 때, \\(y_1\\)부터 \\(y_{i-1}\\)까지의 token과 latent document z1을 사용한다.\n\n\\(p(y_1) \\leftarrow p(x, z_1, y_0)\\) , 아직 \\(y_0\\)는 존재하지 않음\n\\(p(y_2) \\leftarrow p(x, z_1, y_1)\\)\n\\(p(y_3) \\leftarrow p(x, z_1, y_{(1, 2)})\\)\n\\(p(y_4) \\leftarrow p(x, z_1, y_{(1, 2, 3)})\\)\n…\n\\(p(y_N) \\leftarrow p(x, z_1, y_{1:N-1})\\)\n\nk개의 z를 retriever로부터 찾아왔다는 가정이므로 k개의 document에 대해 반복할 수 있다.\n각 자리(\\(1, .., N\\))별로 존재하는 K개의 Token을 marginalize한다.\n\n\n\nRAG-Token\nIn the RAG-Token model we can draw a different latent document for each target token and marginalize accordingly. This allows the generator to choose content from several documents when producing an answer. Concretely, the top K documents are retrieved using the retriever, and then the generator produces a distribution for the next output token for each document, before marginalizing, and repeating the process with the following output token, Formally, we define:\n\\(P_{RAG-TOKEN}(y|x) \\approx \\prod_{i}^{N} \\sum_{z \\in top-k(p(\\cdot|x))}p_{\\eta}(z|x)p_{\\theta}(y_{i}|x,z,y_{1:i-1})\\)\n\n1개의 output prediction이 token \\(\\{y_1, ..., y_N\\}\\)로 구성되었다고 가정한다.\n\\(y_i\\)번째 token을 구할 때, \\(y_1\\)부터 \\(y_{i-1}\\)까지의 token을 준비한다.\n\n이 토큰들과 latent \\(z_1\\)를 가지고 \\(y_i\\) token 확률을 구한다.\n이 토큰들과 latent \\(z_2\\)를 가지고 \\(y_i\\) token 확률을 구한다.\n…\n이 토큰들과 latent \\(z_k\\)를 가지고 \\(y_i\\) token 확률을 구한다.\n\n구해진 k개의 token 후보들을 가지고 marginalize하여 \\(y_i\\)번째 token을 구한다.\n\n\n\nGenerator: BART\nThe generator component pθ(yi |x, z, y1:i−1) could be modelled using any encoder-decoder. We use BART-large [32], a pre-trained seq2seq transformer [58] with 400M parameters. To combine the input x with the retrieved content z when generating from BART, we simply concatenate them. BART was pre-trained using a denoising objective and a variety of different noising functions.\n\ngenerator \\(p_{\\theta} (y_{i}|x, z, y_{1:i-1})\\) 는 BART-Large 400M 모델을 사용한 encoder-decoder 구조이다.\ninput query x와 retrieved document z를 심플하게 concatenate하였다.\nParametric Memory라고 부른다."
+  },
+  {
+    "objectID": "pages/papers.html",
+    "href": "pages/papers.html",
+    "title": "junwkim's blog",
+    "section": "",
+    "text": "DrQA: Reading Wikipedia to Answer Open-Domain Questions\n\n\nODQA의 시작점이 되는 논문을 소개합니다.\n\n\n\nJunwoo Kim\n\n\nDec 24, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task.\n\n\nLLM이 가진 약점을 타파하려는 현시점 가장 유의미한 시도를 정리합니다.\n\n\n\nJunwoo Kim\n\n\nDec 27, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "pages/posts.html",
+    "href": "pages/posts.html",
+    "title": "junwkim's blog",
+    "section": "",
+    "text": "GPTs Service로 개인블로그 만들기\n\n\nClaude3만으로 Quarto 기반 블로그 만들기\n\n\n\nJunwoo Kim\n\n\nMar 4, 2024\n\n\n\n\n\n\n\n\nNo matching items"
   }
 ]

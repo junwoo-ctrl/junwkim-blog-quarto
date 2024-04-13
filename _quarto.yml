@@ -3,6 +3,8 @@ project:
   preview:
     port: 4200
   output-dir: ./_site
+  resources:
+    - "static"
 
 website:
   title: "junwkim's blog"
@@ -27,3 +29,6 @@ format:
   html:
     css: styles.css
     js: script.js
+
+web-app-manifest:
+  path: manifest.json
