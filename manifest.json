@@ -2,7 +2,7 @@
   "name": "JKB",
   "short_name": "JKB",
   "start_url": "/index.html",
-  "display": "standalone",
+  "display": "fullscreen",
   "background_color": "#ffffff",
   "theme_color": "#0a3e3c",
   "description": "A blog created with Quarto.",
