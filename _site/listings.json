@@ -11,7 +11,8 @@
       "/pages/technical_writing/progress.html",
       "/pages/papers/RAG/RAG.html",
       "/pages/papers/DrQA/DrQA.html",
-      "/pages/posts/gpt_base_blog.html"
+      "/pages/posts/nlp_interview/nlp_interview.html",
+      "/pages/posts/gpt_base_blog/gpt_base_blog.html"
     ]
   },
   {
@@ -24,7 +25,8 @@
   {
     "listing": "/pages/posts.html",
     "items": [
-      "/pages/posts/gpt_base_blog.html"
+      "/pages/posts/gpt_base_blog/gpt_base_blog.html",
+      "/pages/posts/nlp_interview/nlp_interview.html"
     ]
   }
 ]

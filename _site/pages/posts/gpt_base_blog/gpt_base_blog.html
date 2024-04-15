@@ -60,22 +60,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">junwkim’s blog</span>
     </a>
   </div>
@@ -126,25 +126,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../pages/introduce.html"> 
+    <a class="nav-link" href="../../../pages/introduce.html"> 
 <span class="menu-text">introduce</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pages/technical_writing.html"> 
+    <a class="nav-link" href="../../../pages/technical_writing.html"> 
 <span class="menu-text">technical writing</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pages/posts.html"> 
+    <a class="nav-link" href="../../../pages/posts.html"> 
 <span class="menu-text">posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pages/papers.html"> 
+    <a class="nav-link" href="../../../pages/papers.html"> 
 <span class="menu-text">papers</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../main.html"> 
+    <a class="nav-link" href="../../../main.html"> 
 <span class="menu-text">Back To Home</span></a>
   </li>  
 </ul>
@@ -220,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Quarto를 사용하면 가장 먼저 <strong>_quarto.yaml</strong>을 작성해야합니다. 사실 글 제목인 Claude에게 물었을 때는 main.qmd를 먼저 작성하라고 안내해줬지만, 지금 작업하는 것이 웹페이지로 배포하기 위함이라는 사실을 인지시켜주면 다음과 같이 답변해줍니다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./gpt_base_blog/how_to_build_quarto_website_blog.png" class="img-fluid figure-img"></p>
+<p><img src="./how_to_build_quarto_website_blog.png" class="img-fluid figure-img"></p>
 <figcaption>how to build quarto website blog?</figcaption>
 </figure>
 </div>
@@ -266,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>index.qmd에서는 홈의 가장 기본으로 바라보는 페이지가 main.qmd에서 그려주는 형상이 되도록 지정했습니다. 따라서 블로그의 어디에서든 홈에 접속한다면 main.qmd가 그려주는 페이지로 진입하게 됩니다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./gpt_base_blog/home_main.png" class="img-fluid figure-img"></p>
+<p><img src="./home_main.png" class="img-fluid figure-img"></p>
 <figcaption>home main page</figcaption>
 </figure>
 </div>
@@ -284,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">## 소개글</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="at">안녕하세요. 제 이름은 김준우입니다.</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="at">서울/경기권에 거주하고 있고, 현재는 Machine Learning Engineer로 Gmarket에서 근무하고 있습니다. AI/ML 알고리즘과 엔지니어링 요소를 활용하여 세상에 유용한 application을 제공하는데에 관심이 있습니다.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>이렇게 작성한 마크다운 문법은 다음과 같이 나타납니다. <img src="./gpt_base_blog/introduce.png" class="img-fluid" alt="introduce page"></p>
+<p>이렇게 작성한 마크다운 문법은 다음과 같이 나타납니다. <img src="./introduce.png" class="img-fluid" alt="introduce page"></p>
 <p>이어서, 홈화면에 나타난 카드 횡스크롤 방식의 UI를 구현해보겠습니다. 요즘 넷플릭스처럼 콘텐츠를 가로로 스크롤하며 제공해주는 방식의 UI가 매우 유행하고 있습니다. 제가 생각하기로는 콘텐츠가 아주 많아진 요즘 시대에는 거의 필수에 가까울 것으로 생각되는 디자인 요소 중 하나라고 생각합니다.</p>
 <p>Quarto에서는 내가 작성한 게시글들이라는 콘텐츠를 Listing해서 보여주는 기능이 있습니다. 홈페이지에서 제공하는 document에서 다양한 형식의 quarto content 작성방식을 제공하고 있습니다.</p>
 <ul>
@@ -304,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>저는 실제로는 문서정독을 통해 EJS(Embedded JavaScript)라는 기능을 통해 사용자가 직접 정의한 UI를 입힐 수 있음을 파악했지만, 갖은 노력을 다해도 도저히 구현할 수 없었습니다. 그래서 Claude에게 다시한번 물어보았습니다. Claude는 EJS 문법 작성과 CSS파일 생성을 거의 대부분 수행하였지만, 사소한 오류와 에러들이 있었고 이를 바로 잡는데에 대부분의 시간을 보냈습니다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./gpt_base_blog/claude_quarto_debug.png" class="img-fluid figure-img"></p>
+<p><img src="./claude_quarto_debug.png" class="img-fluid figure-img"></p>
 <figcaption>claude도 디버깅을 잘 못할 수 있다.</figcaption>
 </figure>
 </div>
@@ -345,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;/</span>a<span class="op">&gt;</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;%</span> } <span class="op">%&gt;</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>div<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>위 코드를 적용하자, 드디어 초기에 제가 원하던 컨셉과 비슷한 화면 view가 생성되었습니다! <img src="./gpt_base_blog/claude_master_piece.png" class="img-fluid" alt="claude가 해냈다!!"></p>
+<p>위 코드를 적용하자, 드디어 초기에 제가 원하던 컨셉과 비슷한 화면 view가 생성되었습니다! <img src="./claude_master_piece.png" class="img-fluid" alt="claude가 해냈다!!"></p>
 <p>한번 기능이 완성되고 나서부터는 원하는 UI를 구현하는 것은 비교적 빠르게 수행 가능했습니다. 사소한 디버깅이나 레이아웃을 수정하는 오류는 claude를 통해 해결하였고, 추가적인 style 변화를 위해 몇가지 요소를 추가했습니다.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">.</span><span class="at">card</span><span class="op">-</span>container {</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">display</span><span class="op">:</span> flex<span class="op">;</span></span>

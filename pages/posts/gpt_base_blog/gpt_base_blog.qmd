@@ -4,7 +4,7 @@ description: |
     Claude3만으로 Quarto 기반 블로그 만들기
 date: "2024-03-04"
 author: "Junwoo Kim"
-image: "./gpt_base_blog/how_to_build_quarto_website_blog.png"
+image: "./how_to_build_quarto_website_blog.png"
 ---
 
 ## 개요
@@ -31,7 +31,7 @@ Quarto 홈페이지에 들어가서 **Get Started** 탭을 누르면 자신의 �
 #### 첫 화면
 Quarto를 사용하면 가장 먼저 **\_quarto.yaml**을 작성해야합니다. 사실 글 제목인 Claude에게 물었을 때는 main.qmd를 먼저 작성하라고 안내해줬지만, 지금 작업하는 것이 웹페이지로 배포하기 위함이라는 사실을 인지시켜주면 다음과 같이 답변해줍니다.
 
-![how to build quarto website blog?](./gpt_base_blog/how_to_build_quarto_website_blog.png)
+![how to build quarto website blog?](./how_to_build_quarto_website_blog.png)
 
 실제로는 저는 다음과 같은 _quarto.yml을 작성했습니다.
 
@@ -80,7 +80,7 @@ pagetitle: "Home"
 
 index.qmd에서는 홈의 가장 기본으로 바라보는 페이지가 main.qmd에서 그려주는 형상이 되도록 지정했습니다. 따라서 블로그의 어디에서든 홈에 접속한다면 main.qmd가 그려주는 페이지로 진입하게 됩니다.
 
-![home main page](./gpt_base_blog/home_main.png)
+![home main page](./home_main.png)
 
   
 
@@ -102,7 +102,7 @@ format:
 ```
 
 이렇게 작성한 마크다운 문법은 다음과 같이 나타납니다.
-![introduce page](./gpt_base_blog/introduce.png)
+![introduce page](./introduce.png)
 
 이어서, 홈화면에 나타난 카드 횡스크롤 방식의 UI를 구현해보겠습니다. 요즘 넷플릭스처럼 콘텐츠를 가로로 스크롤하며 제공해주는 방식의 UI가 매우 유행하고 있습니다. 제가 생각하기로는 콘텐츠가 아주 많아진 요즘 시대에는 거의 필수에 가까울 것으로 생각되는 디자인 요소 중 하나라고 생각합니다.
 
@@ -131,7 +131,7 @@ listing:
 
 저는 실제로는 문서정독을 통해 EJS(Embedded JavaScript)라는 기능을 통해 사용자가 직접 정의한 UI를 입힐 수 있음을 파악했지만, 갖은 노력을 다해도 도저히 구현할 수 없었습니다. 그래서 Claude에게 다시한번 물어보았습니다. Claude는 EJS 문법 작성과 CSS파일 생성을 거의 대부분 수행하였지만, 사소한 오류와 에러들이 있었고 이를 바로 잡는데에 대부분의 시간을 보냈습니다.
 
-![claude도 디버깅을 잘 못할 수 있다.](./gpt_base_blog/claude_quarto_debug.png)
+![claude도 디버깅을 잘 못할 수 있다.](./claude_quarto_debug.png)
 
 
 현존 GPTs 서비스 중 가장 강력하다고 알려진 Claude 또한 이미지 입력까지 제공받았음에도 유료 API Quoto를 3번이나 소진할 떄까지 올바른 방법을 제시하지 못했습니다. 그러던 중 클로드가 다음과 같은 제안을 해왔습니다.
@@ -176,7 +176,7 @@ listing:
 ```
 
 위 코드를 적용하자, 드디어 초기에 제가 원하던 컨셉과 비슷한 화면 view가 생성되었습니다!
-![claude가 해냈다!!](./gpt_base_blog/claude_master_piece.png)
+![claude가 해냈다!!](./claude_master_piece.png)
 
 
 한번 기능이 완성되고 나서부터는 원하는 UI를 구현하는 것은 비교적 빠르게 수행 가능했습니다. 사소한 디버깅이나 레이아웃을 수정하는 오류는 claude를 통해 해결하였고, 추가적인 style 변화를 위해 몇가지 요소를 추가했습니다.
