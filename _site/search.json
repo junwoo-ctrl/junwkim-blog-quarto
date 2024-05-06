@@ -74,14 +74,14 @@
     "href": "pages/posts/nlp_interview/nlp_interview.html#transformers",
     "title": "NLP Interview List",
     "section": "Transformers",
-    "text": "Transformers\n\nNote | GPT-2,3 등으로부터 최신 GPT 서비스에 이르기까지 LLM의 가장 기본이 되는 이론적 토대들은 RNN으로 부터 파생\n\n\nRNN\n\nCommon NeuralNetwork은 Input Size가 고정되어 있어 입력길이가 가변적인 자연어 Task를 풀기에는 부적합\nRNN은 은닉층의 노드에서 활성화 함수를 통해 나온 결과값을 출력층 방향으로도 보내면서, 다시 은닉층 노드의 다음 계산의 입력으로 보내는 특징\nRNN Architecture\n\n\n\nSequence To Sequence\n\nRNN으로 이미 one-to-many, many-to-many task를 풀 수 있었지만, RNN으로 encoder-decoder 구조를 구성할 수 있음\n입력 문장과 출력 문장의 길이가 다를 경우에 사용하는데, 대표적인 분야가 번역기나 텍스트 요약과 같은 경우\n\n\n인코더 RNN 셀의 마지막 시점의 은닉 상태를 디코더 RNN 셀로 넘겨주는데 이를 컨텍스트 벡터\n컨텍스트 벡터는 디코더 RNN 셀의 첫번째 은닉 상태\ndecoder에서의 입력순서로 인해 &lt;sos&gt; 토큰과 &lt;eos&gt; 토큰을 관리해줘야함"
+    "text": "Transformers\n\nNote | GPT-2,3 등으로부터 최신 GPT 서비스에 이르기까지 LLM의 가장 기본이 되는 이론적 토대들은 RNN으로 부터 파생\n\n\nRNN\n\nCommon NeuralNetwork은 Input Size가 고정되어 있어 입력길이가 가변적인 자연어 Task를 풀기에는 부적합\nRNN은 은닉층의 노드에서 활성화 함수를 통해 나온 결과값을 출력층 방향으로도 보내면서, 다시 은닉층 노드의 다음 계산의 입력으로 보내는 특징\nRNN Architecture\n\n\n\nSequence To Sequence\n\nRNN으로 이미 one-to-many, many-to-many task를 풀 수 있었지만, RNN으로 encoder-decoder 구조를 구성할 수 있음\n입력 문장과 출력 문장의 길이가 다를 경우에 사용하는데, 대표적인 분야가 번역기나 텍스트 요약과 같은 경우\n\n\n인코더 RNN 셀의 마지막 시점의 은닉 상태를 디코더 RNN 셀로 넘겨주는데 이를 컨텍스트 벡터\n컨텍스트 벡터는 디코더 RNN 셀의 첫번째 은닉 상태\ndecoder에서의 입력순서로 인해 &lt;sos&gt; 토큰과 &lt;eos&gt; 토큰을 관리해줘야함\n\n\n\n\n\nAttention\n\nRNN에 기반한 seq2seq 모델에는 크게 두 가지 문제\n\n하나의 고정된 크기의 벡터에 모든 정보를 압축하려고 하니까 정보 손실이 발생\nRNN의 고질적인 문제인 기울기 소실(vanishing gradient) 문제\n\nKey Idea of Attention\n\n디코더에서 출력 단어를 예측하는 매 시점(time step)마다, 인코더에서의 전체 입력 문장을 다시 한 번 참고한다는 것\n모든 입력문장을 전부 참조하는 것이 아니라, 해당 시점에서 예측해야할 단어와 연관이 있는 입력 단어 부분을 좀 더 집중(attention)\n\n\\(Attention(Q, K, V) = Attention Value\\)\n\n\n어텐션 함수는 주어진 ’쿼리(Query)’에 대해서 모든 ’키(Key)’와의 유사도를 각각 구함\n구해낸 이 유사도를 키와 맵핑되어있는 각각의 ’값(Value)’에 반영\n유사도가 반영된 ’값(Value)’을 모두 더해서 리턴(Attention Value 라고 부름)\nsequence to sequence 모델을 기준으로 다음과 같이 정의\n\nQ = Query : t 시점의 디코더 셀에서의 은닉 상태\nK = Keys : 모든 시점의 인코더 셀의 은닉 상태들\nV = Values : 모든 시점의 인코더 셀의 은닉 상태들\n\n\nDot-Product Attention\n\n(To Be Continue)"
   },
   {
     "objectID": "main.html",
     "href": "main.html",
     "title": "junwkim's blog",
     "section": "",
-    "text": "technical writing\n\n\n  Working In Progess Junwoo Kim, Nov 11, 1111 \n\n\nNo matching items\n\n\n\nPapers\n\n\n  RAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task. Junwoo Kim, Dec 27, 2023 \n  DrQA: Reading Wikipedia to Answer Open-Domain Questions Junwoo Kim, Dec 24, 2023 \n\n\nNo matching items\n\n\n\nPosts\n\n\n &lt;img class=“card-image” src= alt=“이미지 설명”&gt; NLP Interview List Junwoo Kim, Apr 14, 2024 \n  GPTs Service로 개인블로그 만들기 Junwoo Kim, Mar 4, 2024 \n\n\nNo matching items"
+    "text": "technical writing\n\n\n  Working In Progess Junwoo Kim, Nov 11, 1111 \n\n\nNo matching items\n\n\n\nPapers\n\n\n  RAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task. Junwoo Kim, Dec 27, 2023 \n  DrQA: Reading Wikipedia to Answer Open-Domain Questions Junwoo Kim, Dec 24, 2023 \n\n\nNo matching items\n\n\n\nPosts\n\n\n  NLP Interview List Junwoo Kim, Apr 14, 2024 \n  GPTs Service로 개인블로그 만들기 Junwoo Kim, Mar 4, 2024 \n\n\nNo matching items"
   },
   {
     "objectID": "pages/posts/gpt_base_blog/gpt_base_blog.html",
@@ -151,6 +151,6 @@
     "href": "pages/posts.html",
     "title": "junwkim's blog",
     "section": "",
-    "text": "GPTs Service로 개인블로그 만들기\n\n\nClaude3만으로 Quarto 기반 블로그 만들기\n\n\n\nJunwoo Kim\n\n\nMar 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nNLP Interview List\n\n\nNLP 면접질문을 대비합니다. GPT 기반으로 작성되었습니다.\n\n\n\nJunwoo Kim\n\n\nApr 14, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "GPTs Service로 개인블로그 만들기\n\n\nClaude3만으로 Quarto 기반 블로그 만들기\n\n\n\nJunwoo Kim\n\n\nMar 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNLP Interview List\n\n\nNLP 면접질문을 대비합니다. GPT 기반으로 작성되었습니다.\n\n\n\nJunwoo Kim\n\n\nApr 14, 2024\n\n\n\n\n\n\n\n\nNo matching items"
   }
 ]

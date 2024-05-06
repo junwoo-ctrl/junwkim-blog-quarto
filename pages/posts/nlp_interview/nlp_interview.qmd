@@ -5,6 +5,7 @@ description: |
     NLP 면접질문을 대비합니다. GPT 기반으로 작성되었습니다.
 date: "2024-04-14"
 author: "Junwoo Kim"
+image: ./RNN.png
 ---
 
 
@@ -79,6 +80,26 @@ author: "Junwoo Kim"
 		- 인코더 RNN 셀의 마지막 시점의 은닉 상태를 디코더 RNN 셀로 넘겨주는데 이를 컨텍스트 벡터
 		- 컨텍스트 벡터는 디코더 RNN 셀의 첫번째 은닉 상태
 		- decoder에서의 입력순서로 인해 \<sos\> 토큰과 \<eos\> 토큰을 관리해줘야함
+
+##### Attention
+- RNN에 기반한 seq2seq 모델에는 크게 두 가지 문제
+	- 하나의 고정된 크기의 벡터에 모든 정보를 압축하려고 하니까 정보 손실이 발생
+	- RNN의 고질적인 문제인 기울기 소실(vanishing gradient) 문제
+
+- Key Idea of Attention
+	- 디코더에서 출력 단어를 예측하는 매 시점(time step)마다, 인코더에서의 전체 입력 문장을 다시 한 번 참고한다는 것
+	- 모든 입력문장을 전부 참조하는 것이 아니라, 해당 시점에서 예측해야할 단어와 연관이 있는 입력 단어 부분을 좀 더 집중(attention)
+- $Attention(Q, K, V) = Attention Value$
+	- ![](./attention.png)
+	- 어텐션 함수는 주어진 '쿼리(Query)'에 대해서 모든 '키(Key)'와의 유사도를 각각 구함
+	- 구해낸 이 유사도를 키와 맵핑되어있는 각각의 '값(Value)'에 반영
+	- 유사도가 반영된 '값(Value)'을 모두 더해서 리턴(Attention Value 라고 부름)
+	- sequence to sequence 모델을 기준으로 다음과 같이 정의
+		- Q = Query : t 시점의 디코더 셀에서의 은닉 상태
+		- K = Keys : 모든 시점의 인코더 셀의 은닉 상태들
+		- V = Values : 모든 시점의 인코더 셀의 은닉 상태들
+- Dot-Product Attention
+	- (To Be Continue)
 
 
 
