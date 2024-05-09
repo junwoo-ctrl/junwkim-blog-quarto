@@ -2,13 +2,13 @@
   {
     "listing": "/pages/technical_writing.html",
     "items": [
-      "/pages/technical_writing/progress.html"
+      "/pages/technical_writing/llm_agent/progress.html"
     ]
   },
   {
     "listing": "/main.html",
     "items": [
-      "/pages/technical_writing/progress.html",
+      "/pages/technical_writing/llm_agent/progress.html",
       "/pages/papers/RAG/RAG.html",
       "/pages/papers/DrQA/DrQA.html",
       "/pages/posts/nlp_interview/nlp_interview.html",

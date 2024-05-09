@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Junwoo Kim">
+<meta name="dcterms.date" content="2024-05-10">
+<meta name="description" content="대화형 Interaction에서 벗어나, Task를 수행하기 위한 LLM Agent를 소개합니다.">
 
-<title>junwkim’s blog</title>
+<title>junwkim’s blog - LLM Agent</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +26,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,77 +69,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-technical_writing_list .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-technical_writing_list'] = new List('listing-technical_writing_list', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">junwkim’s blog</span>
     </a>
   </div>
@@ -149,25 +92,25 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../pages/introduce.html"> 
+    <a class="nav-link" href="../../../pages/introduce.html"> 
 <span class="menu-text">introduce</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../pages/technical_writing.html" aria-current="page"> 
+    <a class="nav-link" href="../../../pages/technical_writing.html"> 
 <span class="menu-text">technical writing</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pages/posts.html"> 
+    <a class="nav-link" href="../../../pages/posts.html"> 
 <span class="menu-text">posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pages/papers.html"> 
+    <a class="nav-link" href="../../../pages/papers.html"> 
 <span class="menu-text">papers</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../main.html"> 
+    <a class="nav-link" href="../../../main.html"> 
 <span class="menu-text">Back To Home</span></a>
   </li>  
 </ul>
@@ -178,54 +121,273 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">LLM Agent</h1>
+</div>
+
+<div>
+  <div class="description">
+    <p>대화형 Interaction에서 벗어나, Task를 수행하기 위한 LLM Agent를 소개합니다.</p>
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Junwoo Kim </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 10, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
+</header>
 
 
+<section id="개요" class="level2">
+<h2 class="anchored" data-anchor-id="개요">개요</h2>
+<p>기본적으로 Large Language Model은 OpenAI, Google 등 Product API이든, Open-Source 모델이든 대화형 형식을 갖추고 채팅을 할 수 있는 기능만을 갖추고 있습니다. 또한, 이미 학습되어 있는 지식의 한도 안에서만 답변을 할 수 있습니다. 이는 우리가 기대하는 AGI 혹은 원하는 기대효과를 가지고 동작하게 할 수 있는 도구로써의 활용과는 차이가 있습니다.</p>
+<p>LLM Agent는 이러한 사용패턴에서 벗어나 자동화된 추론과 의사결정을 가능케하는 일종의 <strong>Engine</strong>이라고 생각할 수 있습니다. 우리가 원하는 어플리케이션은 기업 내 시스템에서의 데이터베이스에서 데이터를 가지고 와서 이를 기반으로 분석하여 답변을 내야할 수도 있고, 검색엔진을 통해 인터넷의 데이터를 가지고 와서 검색된 문서를 기반으로 답변을 만들 수 도 있어야합니다.</p>
+<p>이러한 역할을 수행하려면, LLM이 적절한 Tool을 선택해야하고 Tool을 사용하여 수행한 결과를 다시 사용자에게 전달할 수 있어야합니다. 이러한 일을 수행하는 개체가 바로 <strong>LLM Agent</strong>라고 할 수 있습니다.</p>
+</section>
+<section id="agent-system-overview" class="level2">
+<h2 class="anchored" data-anchor-id="agent-system-overview">Agent System Overview</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./Overview_Of_LLM_Agent.png" class="img-fluid figure-img"></p>
+<figcaption>Overview of LLM-Agent</figcaption>
+</figure>
+</div>
+<p>LLM 기반의 자동화 Agent 시스템에서 LLM은 일종의 두뇌역할을 하고, 다음과 같은 components들로 구성됩니다.</p>
+<section id="planning" class="level5">
+<h5 class="anchored" data-anchor-id="planning"><strong>Planning</strong></h5>
+<ul>
+<li>Sub-goal / Decomposion
+<ul>
+<li>Agent는 큰 작업을 더 작고 관리가능한 하위목표로 분해(decompose)하여 복잡한 작업을 처리할 수 있도록 합니다.</li>
+</ul></li>
+<li>Reflection / Refinement
+<ul>
+<li>과거 행동에 대해 자기비판과 성찰을 할 수 있고, next step을 위해 작업을 개선하여 final result의 결과를 향상시킵니다.</li>
+</ul></li>
+</ul>
+</section>
+<section id="memory" class="level5">
+<h5 class="anchored" data-anchor-id="memory"><strong>Memory</strong></h5>
+<ul>
+<li>Short-Term Memory
+<ul>
+<li>Prompt Engineering을 Short-Term Memory로 생각하여 유용한 학습(in-context learning)으로 활용한다고 볼 수 수 있습니다.</li>
+</ul></li>
+<li>Long-Term Memory
+<ul>
+<li>LLM이 External Database(vector db 등), 확장된 검색결과를 활용하여 장기간의 혹은 무한한 “information”을 유지하고 회상할 수 수 있는 능력을 갖게 됩니다.</li>
+</ul></li>
+</ul>
+</section>
+<section id="tool-use" class="level5">
+<h5 class="anchored" data-anchor-id="tool-use"><strong>Tool Use</strong></h5>
+<ul>
+<li>Pre-Training 이후에는 모델 가중치를 변경하기 어려운 상황에서 확보해야하는 추가 정보(최신 정보, Code 실행능력, source code에 대한 access 능력) 등을 사용하는 방법을 갖게 됩니다.</li>
+</ul>
+</section>
+</section>
+<section id="planning-1" class="level2">
+<h2 class="anchored" data-anchor-id="planning-1">Planning</h2>
+<p>일반적으로 User의 Query를 수행하기 위해서는 매우 많은 작업단계들을 거쳐야합니다. Agent가 유저의 지시를 파악하여 실행할 계획을 세우는 것에서부터 출발합니다.</p>
+<section id="decomposition" class="level5">
+<h5 class="anchored" data-anchor-id="decomposition"><strong>Decomposition</strong></h5>
+<ul>
+<li><a href="https://arxiv.org/abs/2201.11903">Chain of Thought</a>
+<ul>
+<li>복잡한 작업에 대한 모델성능을 향상시키는 표준 prompting 기법입니다. 주어진 지시문에 “Step by Step”으로 생각하라는 지시를 추가합니다.</li>
+<li>큰 작업을 여러 개의 관리가능한 작업으로 변환하고, 모델의 사고 과정에 대한 해석을 볼 수 있습니다.</li>
+</ul></li>
+<li><a href="https://arxiv.org/abs/2305.10601">Tree of Thoughts</a>
+<ul>
+<li>Thought Decomposition
+<ul>
+<li>문제를 여러 개의 “Thought” 단계로 분할합니다..</li>
+<li>각 생각은 문제 해결을 향한 중간 단계를 나타냅니다.</li>
+<li>생각의 단위는 몇 글자(Crosswords)부터 한 문단(Creative Writing)이 될 수 있습니다.</li>
+<li>LLM이 생성하고 평가할 수 있을만한 “충분히 작고 충분히 커야” 합니다.</li>
+</ul></li>
+<li>Thought Generator
+<ul>
+<li>현재 상태에서 가능한 다음 생각을 생성하는 개체입니다.</li>
+<li>현재 주어진 tree states에서 다음 생각단계에 대한 k개의 후보 Thought를 생성하기 위한 전략을 고려합니다.</li>
+<li>Thought Range가 넓은 경우(Thought가 문단규모일 때)
+<ul>
+<li>Identically Independent Distribution 방식으로 각 생각을 Sampling</li>
+</ul></li>
+<li>Thought Space가 한정적인 경우(Thought가 단어, 혹은 한줄)
+<ul>
+<li>“Proposed Prompt”를 사용하여 순차적으로 생각을 제안합니다.</li>
+</ul></li>
+</ul></li>
+<li>State Evalutator
+<ul>
+<li>현재 상태를 평가하여 문제 해결에 얼마나 가까운지 판단합니다.</li>
+<li>이는 독립적으로 각 상태를 평가(현재 상태를 숫자 값이나 클래스로 평가)하거나, 여러 상태를 비교(vote prompt를 사용하여 상태 간 비교 및 투표)하여 선택하는 방식으로 이루어질 수 있습니다.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="self-reflection" class="level5">
+<h5 class="anchored" data-anchor-id="self-reflection"><strong>Self-Reflection</strong></h5>
+<p>self-reflection은 agent가 과거의 행동을 성찰하고 이전의 실수를 수정하여 발전할 수 있게 하는 역할을 합니다. Agent가 실제 세계의 작업을 하다보면 피할 수 없는 시행착오를 개선하는 역할을 합니다.</p>
+<ul>
+<li><a href="https://arxiv.org/abs/2210.03629">ReAct</a>
+<ul>
+<li>모델에게 생각하고 행동하는 방식을 제공하는 기법입니다.</li>
+<li>Thought-Action-Observation 과정을 거치며 문제를 해결합니다.</li>
+<li><details>
+<summary>
+ReAct Process
+</summary>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Question</td>
+<td>What is the elevation range for the area that the eastern sector of the Colorado orogeny extends into?</td>
+</tr>
+<tr class="even">
+<td>Thought 1</td>
+<td>I need to search Colorado orogeny, find the area that the eastern sector of the Colorado orogeny extends into, then find the elevation range of the area.</td>
+</tr>
+<tr class="odd">
+<td>Action 1</td>
+<td>Search[Colorado orogeny]</td>
+</tr>
+<tr class="even">
+<td>Observation 1</td>
+<td>The Colorado orogeny was an episode of mountain building (an orogeny) in Colorado and surrounding areas.</td>
+</tr>
+<tr class="odd">
+<td>Thought 2</td>
+<td>It does not mention the eastern sector. So I need to look up eastern sector.</td>
+</tr>
+<tr class="even">
+<td>Action 2</td>
+<td>Lookup[eastern sector]</td>
+</tr>
+<tr class="odd">
+<td>Observation 2</td>
+<td>(Result 1 / 1) The eastern sector extends into the High Plains and is called the Central Plains orogeny.</td>
+</tr>
+<tr class="even">
+<td>Thought 3</td>
+<td>The eastern sector of Colorado orogeny extends into the High Plains. So I need to search High Plains and find its elevation range.</td>
+</tr>
+<tr class="odd">
+<td>Action 3</td>
+<td>Search[High Plains]</td>
+</tr>
+<tr class="even">
+<td>Observation 3</td>
+<td>High Plains refers to one of two distinct land regions</td>
+</tr>
+<tr class="odd">
+<td>Thought 4</td>
+<td>I need to instead search High Plains (United States).</td>
+</tr>
+<tr class="even">
+<td>Action 4</td>
+<td>Search[High Plains (United States)</td>
+</tr>
+<tr class="odd">
+<td>Observation 4</td>
+<td>The High Plains are a subregion of the Great Plains. From east to west, the High Plains rise in elevation from around 1,800 to 7,000 ft (550 to 2,130 m).[3]</td>
+</tr>
+<tr class="even">
+<td>Thought 5</td>
+<td>High Plains rise in elevation from around 1,800 to 7,000 ft, so the answer is 1,800 to 7,000 ft.</td>
+</tr>
+<tr class="odd">
+<td>Action 5</td>
+<td>Finish[1,800 to 7,000 ft]</td>
+</tr>
+</tbody>
+</table>
+</details></li>
+</ul></li>
+<li><a href="https://arxiv.org/abs/2303.11366">Reflexion</a>
+<ul>
+<li>기존의 정책기반 강화학습과 달리, 언어적 피드백을 통해 agent를 강화하는 방식을 의미합니다.</li>
+<li>Actor, Evaluator, Self-Reflection 3가지 요소로 구분됩니다.
+<ul>
+<li>Actor는 행동을 생성하고, Evaluator는 이를 평가하며, Self-Reflection 모델은 실패에 대한 <strong>반성</strong>을 생성합니다.</li>
+</ul></li>
+<li>의사결정(AlfWorld), 추론(HotPotQA), 코딩(HumanEval) 등 다양한 task에서 Reflexion이 아주 큰 성능 향상을 보였습니다.</li>
+<li><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./reflexion_react.png" class="img-fluid figure-img"></p>
+<figcaption>Illustration of the Relexion framework</figcaption>
+</figure>
+</div>
+<ul>
+<li>Heuristic 함수는 경로가 너무 비효율적이거나, 환각이 포함되어 있으면 중지할지 말지를 결정합니다.</li>
+<li>비효율적이다라는 것은 성공하지 못한채 너무 오래 반복하고 있는 것을 의미합니다.</li>
+<li>환각은 동일한 관찰결과를 초래하는 연속적인 동일 행동 시퀀스를 마주하는 것으로 정의됩니다.</li>
+</ul></li>
+</ul></li>
+<li><a href="https://arxiv.org/abs/2302.02676">Chain of Hindsight</a>
+<ul>
+<li>(작성예정)</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="memory-1" class="level2">
+<h2 class="anchored" data-anchor-id="memory-1">Memory</h2>
+<section id="types-of-memory" class="level5">
+<h5 class="anchored" data-anchor-id="types-of-memory"><strong>Types of Memory</strong></h5>
+<p>메모리는 정보를 획득, 저장, 보유, 혹은 나중에 retrieve하는데에 사용되는 프로세스로 정의할 수 있습니다. 인간의 기억은 다음과 같이 구분할 수 있습니다. <img src="./human_memory.png" class="img-fluid" alt="Categorization of human memory"></p>
+<ul>
+<li>Sensory memory는 raw inputs, text, images 혹은 여타 modal들의 학습된 embedding 표현으로 볼 수 있습니다.</li>
+<li>Short-term memory는 in-context learning으로 볼 수 있습니다. transformers의 유한한 context window 길이처럼 제한되고, 짧고, 유한합니다.</li>
+<li>Long-term memory는 Agent가 쿼리시점에 주목할 수 있는 외부벡터 저장소로 볼 수 있습니다.</li>
+</ul>
+</section>
+</section>
+<section id="tool-use-1" class="level2">
+<h2 class="anchored" data-anchor-id="tool-use-1">Tool Use</h2>
+<p>사람은 신체/인지적 한계를 벗어나는 일을 수행하기 위해 외부 물체(external tool)를 만들고, 수정하고 활용합니다. LLM에 External Tool를 장착하면 모델의 기능이 크게 확장될 수 있습니다.</p>
 
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-technical_writing_list">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1715266800000" data-listing-file-modified-sort="1715252209577" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="841">
-<a href="../pages/technical_writing/llm_agent/progress.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="../pages/technical_writing/llm_agent/Overview_Of_LLM_Agent.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-LLM Agent
-</h5>
-<div class="card-text listing-description">
-<p>대화형 Interaction에서 벗어나, Task를 수행하기 위한 LLM Agent를 소개합니다.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Junwoo Kim
-</div>
-<div class="listing-date">
-May 10, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

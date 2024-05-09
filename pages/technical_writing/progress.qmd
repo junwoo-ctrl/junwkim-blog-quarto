@@ -1,9 +1,0 @@
----
-title: "Working In Progess"
-description: |
-    Not Written Yet
-date: "1111-11-11"
-author: "Junwoo Kim"
-image: "./pen_image.png"
----
-
