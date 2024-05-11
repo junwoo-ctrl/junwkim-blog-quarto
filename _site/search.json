@@ -7,6 +7,48 @@
     "text": "LLM Agent\n\n\n대화형 Interaction에서 벗어나, Task를 수행하기 위한 LLM Agent를 소개합니다.\n\n\n\nJunwoo Kim\n\n\nMay 10, 2024\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "pages/technical_writing/llm_agent/llm_agent.html",
+    "href": "pages/technical_writing/llm_agent/llm_agent.html",
+    "title": "LLM Agent",
+    "section": "",
+    "text": "https://lilianweng.github.io/posts/2023-06-23-agent/ 의 내용을 공부함"
+  },
+  {
+    "objectID": "pages/technical_writing/llm_agent/llm_agent.html#개요",
+    "href": "pages/technical_writing/llm_agent/llm_agent.html#개요",
+    "title": "LLM Agent",
+    "section": "개요",
+    "text": "개요\n기본적으로 Large Language Model은 OpenAI, Google 등 Product API이든, Open-Source 모델이든 대화형 형식을 갖추고 채팅을 할 수 있는 기능만을 갖추고 있습니다. 또한, 이미 학습되어 있는 지식의 한도 안에서만 답변을 할 수 있습니다. 이는 우리가 기대하는 AGI 혹은 원하는 기대효과를 가지고 동작하게 할 수 있는 도구로써의 활용과는 차이가 있습니다.\nLLM Agent는 이러한 사용패턴에서 벗어나 자동화된 추론과 의사결정을 가능케하는 일종의 Engine이라고 생각할 수 있습니다. 우리가 원하는 어플리케이션은 기업 내 시스템에서의 데이터베이스에서 데이터를 가지고 와서 이를 기반으로 분석하여 답변을 내야할 수도 있고, 검색엔진을 통해 인터넷의 데이터를 가지고 와서 검색된 문서를 기반으로 답변을 만들 수 도 있어야합니다.\n이러한 역할을 수행하려면, LLM이 적절한 Tool을 선택해야하고 Tool을 사용하여 수행한 결과를 다시 사용자에게 전달할 수 있어야합니다. 이러한 일을 수행하는 개체가 바로 LLM Agent라고 할 수 있습니다."
+  },
+  {
+    "objectID": "pages/technical_writing/llm_agent/llm_agent.html#agent-system-overview",
+    "href": "pages/technical_writing/llm_agent/llm_agent.html#agent-system-overview",
+    "title": "LLM Agent",
+    "section": "Agent System Overview",
+    "text": "Agent System Overview\n\n\n\nOverview of LLM-Agent\n\n\nLLM 기반의 자동화 Agent 시스템에서 LLM은 일종의 두뇌역할을 하고, 다음과 같은 components들로 구성됩니다.\n\nPlanning\n\nSub-goal / Decomposion\n\nAgent는 큰 작업을 더 작고 관리가능한 하위목표로 분해(decompose)하여 복잡한 작업을 처리할 수 있도록 합니다.\n\nReflection / Refinement\n\n과거 행동에 대해 자기비판과 성찰을 할 수 있고, next step을 위해 작업을 개선하여 final result의 결과를 향상시킵니다.\n\n\n\n\nMemory\n\nShort-Term Memory\n\nPrompt Engineering을 Short-Term Memory로 생각하여 유용한 학습(in-context learning)으로 활용한다고 볼 수 수 있습니다.\n\nLong-Term Memory\n\nLLM이 External Database(vector db 등), 확장된 검색결과를 활용하여 장기간의 혹은 무한한 “information”을 유지하고 회상할 수 수 있는 능력을 갖게 됩니다.\n\n\n\n\nTool Use\n\nPre-Training 이후에는 모델 가중치를 변경하기 어려운 상황에서 확보해야하는 추가 정보(최신 정보, Code 실행능력, source code에 대한 access 능력) 등을 사용하는 방법을 갖게 됩니다."
+  },
+  {
+    "objectID": "pages/technical_writing/llm_agent/llm_agent.html#planning-1",
+    "href": "pages/technical_writing/llm_agent/llm_agent.html#planning-1",
+    "title": "LLM Agent",
+    "section": "Planning",
+    "text": "Planning\n일반적으로 User의 Query를 수행하기 위해서는 매우 많은 작업단계들을 거쳐야합니다. Agent가 유저의 지시를 파악하여 실행할 계획을 세우는 것에서부터 출발합니다.\n\nDecomposition\n\nChain of Thought\n\n복잡한 작업에 대한 모델성능을 향상시키는 표준 prompting 기법입니다. 주어진 지시문에 “Step by Step”으로 생각하라는 지시를 추가합니다.\n큰 작업을 여러 개의 관리가능한 작업으로 변환하고, 모델의 사고 과정에 대한 해석을 볼 수 있습니다.\n\nTree of Thoughts\n\nThought Decomposition\n\n문제를 여러 개의 “Thought” 단계로 분할합니다..\n각 생각은 문제 해결을 향한 중간 단계를 나타냅니다.\n생각의 단위는 몇 글자(Crosswords)부터 한 문단(Creative Writing)이 될 수 있습니다.\nLLM이 생성하고 평가할 수 있을만한 “충분히 작고 충분히 커야” 합니다.\n\nThought Generator\n\n현재 상태에서 가능한 다음 생각을 생성하는 개체입니다.\n현재 주어진 tree states에서 다음 생각단계에 대한 k개의 후보 Thought를 생성하기 위한 전략을 고려합니다.\nThought Range가 넓은 경우(Thought가 문단규모일 때)\n\nIdentically Independent Distribution 방식으로 각 생각을 Sampling\n\nThought Space가 한정적인 경우(Thought가 단어, 혹은 한줄)\n\n“Proposed Prompt”를 사용하여 순차적으로 생각을 제안합니다.\n\n\nState Evalutator\n\n현재 상태를 평가하여 문제 해결에 얼마나 가까운지 판단합니다.\n이는 독립적으로 각 상태를 평가(현재 상태를 숫자 값이나 클래스로 평가)하거나, 여러 상태를 비교(vote prompt를 사용하여 상태 간 비교 및 투표)하여 선택하는 방식으로 이루어질 수 있습니다.\n\n\n\n\n\nSelf-Reflection\nself-reflection은 agent가 과거의 행동을 성찰하고 이전의 실수를 수정하여 발전할 수 있게 하는 역할을 합니다. Agent가 실제 세계의 작업을 하다보면 피할 수 없는 시행착오를 개선하는 역할을 합니다.\n\nReAct\n\n모델에게 생각하고 행동하는 방식을 제공하는 기법입니다.\nThought-Action-Observation 과정을 거치며 문제를 해결합니다.\n\n\nReAct Process\n\n\n\n\n\n\n\n\nStep\nDetail\n\n\n\n\nQuestion\nWhat is the elevation range for the area that the eastern sector of the Colorado orogeny extends into?\n\n\nThought 1\nI need to search Colorado orogeny, find the area that the eastern sector of the Colorado orogeny extends into, then find the elevation range of the area.\n\n\nAction 1\nSearch[Colorado orogeny]\n\n\nObservation 1\nThe Colorado orogeny was an episode of mountain building (an orogeny) in Colorado and surrounding areas.\n\n\nThought 2\nIt does not mention the eastern sector. So I need to look up eastern sector.\n\n\nAction 2\nLookup[eastern sector]\n\n\nObservation 2\n(Result 1 / 1) The eastern sector extends into the High Plains and is called the Central Plains orogeny.\n\n\nThought 3\nThe eastern sector of Colorado orogeny extends into the High Plains. So I need to search High Plains and find its elevation range.\n\n\nAction 3\nSearch[High Plains]\n\n\nObservation 3\nHigh Plains refers to one of two distinct land regions\n\n\nThought 4\nI need to instead search High Plains (United States).\n\n\nAction 4\nSearch[High Plains (United States)\n\n\nObservation 4\nThe High Plains are a subregion of the Great Plains. From east to west, the High Plains rise in elevation from around 1,800 to 7,000 ft (550 to 2,130 m).[3]\n\n\nThought 5\nHigh Plains rise in elevation from around 1,800 to 7,000 ft, so the answer is 1,800 to 7,000 ft.\n\n\nAction 5\nFinish[1,800 to 7,000 ft]\n\n\n\n\n\nReflexion\n\n기존의 정책기반 강화학습과 달리, 언어적 피드백을 통해 agent를 강화하는 방식을 의미합니다.\nActor, Evaluator, Self-Reflection 3가지 요소로 구분됩니다.\n\nActor는 행동을 생성하고, Evaluator는 이를 평가하며, Self-Reflection 모델은 실패에 대한 반성을 생성합니다.\n\n의사결정(AlfWorld), 추론(HotPotQA), 코딩(HumanEval) 등 다양한 task에서 Reflexion이 아주 큰 성능 향상을 보였습니다.\n\n\n\nIllustration of the Relexion framework\n\n\n\nHeuristic 함수는 경로가 너무 비효율적이거나, 환각이 포함되어 있으면 중지할지 말지를 결정합니다.\n비효율적이다라는 것은 성공하지 못한채 너무 오래 반복하고 있는 것을 의미합니다.\n환각은 동일한 관찰결과를 초래하는 연속적인 동일 행동 시퀀스를 마주하는 것으로 정의됩니다.\n\n\nChain of Hindsight\n\n(작성예정)"
+  },
+  {
+    "objectID": "pages/technical_writing/llm_agent/llm_agent.html#memory-1",
+    "href": "pages/technical_writing/llm_agent/llm_agent.html#memory-1",
+    "title": "LLM Agent",
+    "section": "Memory",
+    "text": "Memory\n\nTypes of Memory\n메모리는 정보를 획득, 저장, 보유, 혹은 나중에 retrieve하는데에 사용되는 프로세스로 정의할 수 있습니다. 인간의 기억은 다음과 같이 구분할 수 있습니다. \n\nSensory memory는 raw inputs, text, images 혹은 여타 modal들의 학습된 embedding 표현으로 볼 수 있습니다.\nShort-term memory는 in-context learning으로 볼 수 있습니다. transformers의 유한한 context window 길이처럼 제한되고, 짧고, 유한합니다.\nLong-term memory는 Agent가 쿼리시점에 주목할 수 있는 외부벡터 저장소로 볼 수 있습니다."
+  },
+  {
+    "objectID": "pages/technical_writing/llm_agent/llm_agent.html#tool-use-1",
+    "href": "pages/technical_writing/llm_agent/llm_agent.html#tool-use-1",
+    "title": "LLM Agent",
+    "section": "Tool Use",
+    "text": "Tool Use\n사람은 신체/인지적 한계를 벗어나는 일을 수행하기 위해 외부 물체(external tool)를 만들고, 수정하고 활용합니다. LLM에 External Tool를 장착하면 모델의 기능이 크게 확장될 수 있습니다.\n\nMRKL(Moular Reasoning, Knowledge and Language)\n\nLLM이 어떤 작업을 수행할때의 한계는 다음과 같습니다.\n\n최신 정보 접근 불가: 학습할 당시의 기억만을 가지고 있으므로 최신정보를 활용할 수 없습니다. Memory Step에서 이야기하는 것과는 또다른 개념입니다. 예를들면, 최신 뉴스정보가 아니라 최신 pytorch 버전을 사용할 수 없는 것입니다.\n독점 정보 활용 불가: 특정 회사, 단체 내에서만 사용할 수 있는 도구들을 사용하기에 불리합니다.\n추론 능력 부족 (예: 산술 연산): 복잡한 수식계산 및 로직을 처리하는데에는 약점이 있습니다.\n모델 폭발 (다양한 작업에 범용적으로 활용하기 위해 여러 모델을 fine-tuning 해야 함): 만약 모든 task마다 fine-tune을 해야한다면 모델이 넘쳐날 것입니다.\n\nMRKL은 다음과 같이 동작합니다.\n\n신경망, 계산기, DB 등 다양한 전문가 모듈(expert module)로 구성하고 LLM은 Router로써 동작하여 각 모듈에 필요한 입력과 지시를 전달합니다.\n다음과 같은 장점들이 생깁니다.\n\n처리 불가능한 입력은 대규모 언어 모델로 전달하여 안전하게 대응\n새로운 기능 추가가 용이함\n모듈 선택을 통한 해석 가능성 향상\n최신 정보와 독점 정보 활용 가능\n여러 모듈을 연결하여 복잡한 추론 가능\n\n\n강력하고 실용적인 자연어 처리 시스템을 구현한 케이스! ToolFormer, TALM 등이 이러한 개념을 구현하였습니다.\n제품단에서는 ChatGPT/OpenAI의 Function Calling이 대표적인 case\n\n\n\nHuggingGPT\nHuggingGPT는 ChatGPT와 Huggingface를 활용하여 작업을 지시할 수 있는 Framework 입니다. 이 시스템은 4가지 단계를 통해 진행됩니다.\n\nTask Planning\n\nLLM은 두뇌 역할을 하며 사용자 요청을 여러 작업으로 구문 분석합니다.\n각 작업에는 작업 유형, ID, 종속성, 인수라는 네 가지 속성이 연결되어 있습니다.\nLLM이 작업 분석 및 계획을 수행하도록 안내하기 위해 몇 가지 예시를 ㅇ\n\n\nInstruction 예시\n\nThe AI assistant can parse user input to several tasks: [{“task”: task, “id”, task_id, “dep”: dependency_task_ids, “args”: {“text”: text, “image”: URL, “audio”: URL, “video”: URL}}]. The “dep” field denotes the id of the previous task which generates a new resource that the current task relies on. A special tag “-task_id” refers to the generated text image, audio and video in the dependency task with id as task_id. The task MUST be selected from the following options: {{ Available Task List }}. There is a logical relationship between tasks, please note their order. If the user input can’t be parsed, you need to reply empty JSON. Here are several cases for your reference: {{ Demonstrations }}. The chat history is recorded as {{ Chat History }}. From this chat history, you can find the path of the user-mentioned resources for your task planning.\n\n\nModel Selection\nTask Execution\nResponse Generation"
+  },
+  {
     "objectID": "pages/papers/DrQA/DrQA.html",
     "href": "pages/papers/DrQA/DrQA.html",
     "title": "DrQA: Reading Wikipedia to Answer Open-Domain Questions",
@@ -152,54 +194,5 @@
     "title": "junwkim's blog",
     "section": "",
     "text": "GPTs Service로 개인블로그 만들기\n\n\nClaude3만으로 Quarto 기반 블로그 만들기\n\n\n\nJunwoo Kim\n\n\nMar 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNLP Interview List\n\n\nNLP 면접질문을 대비합니다. GPT 기반으로 작성되었습니다.\n\n\n\nJunwoo Kim\n\n\nApr 14, 2024\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "pages/technical_writing/llm_agent/progress.html",
-    "href": "pages/technical_writing/llm_agent/progress.html",
-    "title": "LLM Agent",
-    "section": "",
-    "text": "기본적으로 Large Language Model은 OpenAI, Google 등 Product API이든, Open-Source 모델이든 대화형 형식을 갖추고 채팅을 할 수 있는 기능만을 갖추고 있습니다. 또한, 이미 학습되어 있는 지식의 한도 안에서만 답변을 할 수 있습니다. 이는 우리가 기대하는 AGI 혹은 원하는 기대효과를 가지고 동작하게 할 수 있는 도구로써의 활용과는 차이가 있습니다.\nLLM Agent는 이러한 사용패턴에서 벗어나 자동화된 추론과 의사결정을 가능케하는 일종의 Engine이라고 생각할 수 있습니다. 우리가 원하는 어플리케이션은 기업 내 시스템에서의 데이터베이스에서 데이터를 가지고 와서 이를 기반으로 분석하여 답변을 내야할 수도 있고, 검색엔진을 통해 인터넷의 데이터를 가지고 와서 검색된 문서를 기반으로 답변을 만들 수 도 있어야합니다.\n이러한 역할을 수행하려면, LLM이 적절한 Tool을 선택해야하고 Tool을 사용하여 수행한 결과를 다시 사용자에게 전달할 수 있어야합니다. 이러한 일을 수행하는 개체가 바로 LLM Agent라고 할 수 있습니다."
-  },
-  {
-    "objectID": "pages/technical_writing/llm_agent/progress.html#개요",
-    "href": "pages/technical_writing/llm_agent/progress.html#개요",
-    "title": "LLM Agent",
-    "section": "",
-    "text": "기본적으로 Large Language Model은 OpenAI, Google 등 Product API이든, Open-Source 모델이든 대화형 형식을 갖추고 채팅을 할 수 있는 기능만을 갖추고 있습니다. 또한, 이미 학습되어 있는 지식의 한도 안에서만 답변을 할 수 있습니다. 이는 우리가 기대하는 AGI 혹은 원하는 기대효과를 가지고 동작하게 할 수 있는 도구로써의 활용과는 차이가 있습니다.\nLLM Agent는 이러한 사용패턴에서 벗어나 자동화된 추론과 의사결정을 가능케하는 일종의 Engine이라고 생각할 수 있습니다. 우리가 원하는 어플리케이션은 기업 내 시스템에서의 데이터베이스에서 데이터를 가지고 와서 이를 기반으로 분석하여 답변을 내야할 수도 있고, 검색엔진을 통해 인터넷의 데이터를 가지고 와서 검색된 문서를 기반으로 답변을 만들 수 도 있어야합니다.\n이러한 역할을 수행하려면, LLM이 적절한 Tool을 선택해야하고 Tool을 사용하여 수행한 결과를 다시 사용자에게 전달할 수 있어야합니다. 이러한 일을 수행하는 개체가 바로 LLM Agent라고 할 수 있습니다."
-  },
-  {
-    "objectID": "pages/technical_writing/llm_agent/progress.html#architecture",
-    "href": "pages/technical_writing/llm_agent/progress.html#architecture",
-    "title": "LLM Agent",
-    "section": "Architecture",
-    "text": "Architecture\n\n\n\nOverview of LLM-Agent"
-  },
-  {
-    "objectID": "pages/technical_writing/llm_agent/progress.html#agent-system-overview",
-    "href": "pages/technical_writing/llm_agent/progress.html#agent-system-overview",
-    "title": "LLM Agent",
-    "section": "Agent System Overview",
-    "text": "Agent System Overview\n\n\n\nOverview of LLM-Agent\n\n\nLLM 기반의 자동화 Agent 시스템에서 LLM은 일종의 두뇌역할을 하고, 다음과 같은 components들로 구성됩니다.\n\nPlanning\n\nSub-goal / Decomposion\n\nAgent는 큰 작업을 더 작고 관리가능한 하위목표로 분해(decompose)하여 복잡한 작업을 처리할 수 있도록 합니다.\n\nReflection / Refinement\n\n과거 행동에 대해 자기비판과 성찰을 할 수 있고, next step을 위해 작업을 개선하여 final result의 결과를 향상시킵니다.\n\n\n\n\nMemory\n\nShort-Term Memory\n\nPrompt Engineering을 Short-Term Memory로 생각하여 유용한 학습(in-context learning)으로 활용한다고 볼 수 수 있습니다.\n\nLong-Term Memory\n\nLLM이 External Database(vector db 등), 확장된 검색결과를 활용하여 장기간의 혹은 무한한 “information”을 유지하고 회상할 수 수 있는 능력을 갖게 됩니다.\n\n\n\n\nTool Use\n\nPre-Training 이후에는 모델 가중치를 변경하기 어려운 상황에서 확보해야하는 추가 정보(최신 정보, Code 실행능력, source code에 대한 access 능력) 등을 사용하는 방법을 갖게 됩니다."
-  },
-  {
-    "objectID": "pages/technical_writing/llm_agent/progress.html#planning-1",
-    "href": "pages/technical_writing/llm_agent/progress.html#planning-1",
-    "title": "LLM Agent",
-    "section": "Planning",
-    "text": "Planning\n일반적으로 User의 Query를 수행하기 위해서는 매우 많은 작업단계들을 거쳐야합니다. Agent가 유저의 지시를 파악하여 실행할 계획을 세우는 것에서부터 출발합니다.\n\nDecomposition\n\nChain of Thought\n\n복잡한 작업에 대한 모델성능을 향상시키는 표준 prompting 기법입니다. 주어진 지시문에 “Step by Step”으로 생각하라는 지시를 추가합니다.\n큰 작업을 여러 개의 관리가능한 작업으로 변환하고, 모델의 사고 과정에 대한 해석을 볼 수 있습니다.\n\nTree of Thoughts\n\nThought Decomposition\n\n문제를 여러 개의 “Thought” 단계로 분할합니다..\n각 생각은 문제 해결을 향한 중간 단계를 나타냅니다.\n생각의 단위는 몇 글자(Crosswords)부터 한 문단(Creative Writing)이 될 수 있습니다.\nLLM이 생성하고 평가할 수 있을만한 “충분히 작고 충분히 커야” 합니다.\n\nThought Generator\n\n현재 상태에서 가능한 다음 생각을 생성하는 개체입니다.\n현재 주어진 tree states에서 다음 생각단계에 대한 k개의 후보 Thought를 생성하기 위한 전략을 고려합니다.\nThought Range가 넓은 경우(Thought가 문단규모일 때)\n\nIdentically Independent Distribution 방식으로 각 생각을 Sampling\n\nThought Space가 한정적인 경우(Thought가 단어, 혹은 한줄)\n\n“Proposed Prompt”를 사용하여 순차적으로 생각을 제안합니다.\n\n\nState Evalutator\n\n현재 상태를 평가하여 문제 해결에 얼마나 가까운지 판단합니다.\n이는 독립적으로 각 상태를 평가(현재 상태를 숫자 값이나 클래스로 평가)하거나, 여러 상태를 비교(vote prompt를 사용하여 상태 간 비교 및 투표)하여 선택하는 방식으로 이루어질 수 있습니다.\n\n\n\n\n\nSelf-Reflection\nself-reflection은 agent가 과거의 행동을 성찰하고 이전의 실수를 수정하여 발전할 수 있게 하는 역할을 합니다. Agent가 실제 세계의 작업을 하다보면 피할 수 없는 시행착오를 개선하는 역할을 합니다.\n\nReAct\n\n모델에게 생각하고 행동하는 방식을 제공하는 기법입니다.\nThought-Action-Observation 과정을 거치며 문제를 해결합니다.\n\n\nReAct Process\n\n\n\n\n\n\n\n\nStep\nDetail\n\n\n\n\nQuestion\nWhat is the elevation range for the area that the eastern sector of the Colorado orogeny extends into?\n\n\nThought 1\nI need to search Colorado orogeny, find the area that the eastern sector of the Colorado orogeny extends into, then find the elevation range of the area.\n\n\nAction 1\nSearch[Colorado orogeny]\n\n\nObservation 1\nThe Colorado orogeny was an episode of mountain building (an orogeny) in Colorado and surrounding areas.\n\n\nThought 2\nIt does not mention the eastern sector. So I need to look up eastern sector.\n\n\nAction 2\nLookup[eastern sector]\n\n\nObservation 2\n(Result 1 / 1) The eastern sector extends into the High Plains and is called the Central Plains orogeny.\n\n\nThought 3\nThe eastern sector of Colorado orogeny extends into the High Plains. So I need to search High Plains and find its elevation range.\n\n\nAction 3\nSearch[High Plains]\n\n\nObservation 3\nHigh Plains refers to one of two distinct land regions\n\n\nThought 4\nI need to instead search High Plains (United States).\n\n\nAction 4\nSearch[High Plains (United States)\n\n\nObservation 4\nThe High Plains are a subregion of the Great Plains. From east to west, the High Plains rise in elevation from around 1,800 to 7,000 ft (550 to 2,130 m).[3]\n\n\nThought 5\nHigh Plains rise in elevation from around 1,800 to 7,000 ft, so the answer is 1,800 to 7,000 ft.\n\n\nAction 5\nFinish[1,800 to 7,000 ft]\n\n\n\n\n\nReflexion\n\n기존의 정책기반 강화학습과 달리, 언어적 피드백을 통해 agent를 강화하는 방식을 의미합니다.\nActor, Evaluator, Self-Reflection 3가지 요소로 구분됩니다.\n\nActor는 행동을 생성하고, Evaluator는 이를 평가하며, Self-Reflection 모델은 실패에 대한 반성을 생성합니다.\n\n의사결정(AlfWorld), 추론(HotPotQA), 코딩(HumanEval) 등 다양한 task에서 Reflexion이 아주 큰 성능 향상을 보였습니다.\n\n\n\nIllustration of the Relexion framework\n\n\n\nHeuristic 함수는 경로가 너무 비효율적이거나, 환각이 포함되어 있으면 중지할지 말지를 결정합니다.\n비효율적이다라는 것은 성공하지 못한채 너무 오래 반복하고 있는 것을 의미합니다.\n환각은 동일한 관찰결과를 초래하는 연속적인 동일 행동 시퀀스를 마주하는 것으로 정의됩니다.\n\n\nChain of Hindsight\n\n(작성예정)"
-  },
-  {
-    "objectID": "pages/technical_writing/llm_agent/progress.html#memory-1",
-    "href": "pages/technical_writing/llm_agent/progress.html#memory-1",
-    "title": "LLM Agent",
-    "section": "Memory",
-    "text": "Memory\n\nTypes of Memory\n메모리는 정보를 획득, 저장, 보유, 혹은 나중에 retrieve하는데에 사용되는 프로세스로 정의할 수 있습니다. 인간의 기억은 다음과 같이 구분할 수 있습니다. \n\nSensory memory는 raw inputs, text, images 혹은 여타 modal들의 학습된 embedding 표현으로 볼 수 있습니다.\nShort-term memory는 in-context learning으로 볼 수 있습니다. transformers의 유한한 context window 길이처럼 제한되고, 짧고, 유한합니다.\nLong-term memory는 Agent가 쿼리시점에 주목할 수 있는 외부벡터 저장소로 볼 수 있습니다."
-  },
-  {
-    "objectID": "pages/technical_writing/llm_agent/progress.html#tool-use-1",
-    "href": "pages/technical_writing/llm_agent/progress.html#tool-use-1",
-    "title": "LLM Agent",
-    "section": "Tool Use",
-    "text": "Tool Use\n사람은 신체/인지적 한계를 벗어나는 일을 수행하기 위해 외부 물체(external tool)를 만들고, 수정하고 활용합니다. LLM에 External Tool를 장착하면 모델의 기능이 크게 확장될 수 있습니다."
   }
 ]
