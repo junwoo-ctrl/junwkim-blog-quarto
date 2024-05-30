@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Junwoo Kim">
+<meta name="dcterms.date" content="2024-05-10">
+<meta name="description" content="Agent Planning 단계에서 real-world 지식을 도입하는 방법">
 
-<title>junwkim’s blog</title>
+<title>junwkim’s blog - Agent Planning with World Knowledge Model</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +26,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,77 +69,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-papers_list .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-papers_list'] = new List('listing-papers_list', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">junwkim’s blog</span>
     </a>
   </div>
@@ -149,25 +92,25 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../pages/introduce.html"> 
+    <a class="nav-link" href="../../../pages/introduce.html"> 
 <span class="menu-text">introduce</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pages/technical_writing.html"> 
+    <a class="nav-link" href="../../../pages/technical_writing.html"> 
 <span class="menu-text">technical writing</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pages/individuals.html"> 
+    <a class="nav-link" href="../../../pages/individuals.html"> 
 <span class="menu-text">individuals</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../pages/papers.html" aria-current="page"> 
+    <a class="nav-link" href="../../../pages/papers.html"> 
 <span class="menu-text">papers</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../main.html"> 
+    <a class="nav-link" href="../../../main.html"> 
 <span class="menu-text">Back To Home</span></a>
   </li>  
 </ul>
@@ -178,104 +121,102 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div></div></div>
+    
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Agent Planning with World Knowledge Model</h1>
+</div>
+
+<div>
+  <div class="description">
+    <p>Agent Planning 단계에서 real-world 지식을 도입하는 방법</p>
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Junwoo Kim </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 10, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
+</header>
 
 
+<section id="research-topic-purpose" class="level2">
+<h2 class="anchored" data-anchor-id="research-topic-purpose">Research Topic &amp; Purpose</h2>
+<p>Recent endeavors towards directly using large language models (LLMs) as agent models to execute interactive planning tasks have shown commendable results. Despite their achievements, however, they still struggle with brainless trial-and-error in global planning and generating hallucinatory actions in local planning due to their poor understanding of the “real” physical world.</p>
+<ul>
+<li>최근 대형 언어 모델(LLMs)을 에이전트 모델로 직접 사용하여 대화형 계획 작업을 수행하려는 시도는 높이 평가할 만한 결과를 보여주었지만, “실제” 물리 세계에 대한 이해 부족으로 전역 계획에서의 무분별한 시행착오와 지역 계획에서의 환각 동작 생성 문제가 여전히 남아 있음.</li>
+</ul>
+<p>Imitating humans’ mental world knowledge model which provides global prior knowledge before the task and maintains local dynamic knowledge during the task, in this paper, we introduce parametric World Knowledge Model (WKM) to facilitate agent planning.</p>
+<ul>
+<li>이 논문에서는 작업 전 전역 사전 지식을 제공하고 작업 중 지역 동적 지식을 유지하는 인간의 정신 세계 지식 모델을 모방하여, 에이전트 계획을 돕기 위해 매개변수 World Knowledge Model(WKM)을 도입함.</li>
+</ul>
+</section>
+<section id="methodology" class="level2">
+<h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
+<p>Specifically, we first steer the agent model to synthesize task knowledge from the comparison between expert and sampled trajectories.</p>
+<ul>
+<li>구체적으로, 먼저 전문가 궤적과 샘플링된 궤적 간 비교를 통해 작업 지식을 합성하도록 에이전트 모델을 유도함</li>
+</ul>
+<p>Then we prompt it to summarize state knowledge for each planning step from expert trajectories and combine the previous and next actions to build a state knowledge base.</p>
+<ul>
+<li>그 다음 전문가 궤적에서 각 계획 단계별 상태 지식을 요약하고 이전/다음 행동을 결합하여 상태 지식 베이스를 구축하도록 프롬프트를 제공함.</li>
+</ul>
+<p>Lastly, we integrate the generated knowledge into expert trajectories and train a WKM</p>
+<ul>
+<li>마지막으로 생성된 지식을 전문가 궤적에 통합하고 WKM을 훈련시킴</li>
+</ul>
+<p>The agent model needs to be retrained to adapt to the task knowledge. Note our agent and knowledge model are both trained with LoRA sharing the same backbone.</p>
+<ul>
+<li>에이전트 모델은 작업 지식에 적응하기 위해 재훈련되어야 함. 에이전트와 지식 모델은 동일한 backbone을 공유하는 LoRA로 훈련됨.</li>
+</ul>
+</section>
+<section id="experiment-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-analysis">Experiment Analysis</h2>
+<p>We evaluate our method on three real-world simulated planning tasks: ALFWorld, WebShop, and ScienceWorld with three state-of-the-art open-source LLMs, Mistral-7B, Gemma-7B, and Llama-3-8B.</p>
+<ul>
+<li>ALFWorld, WebShop, ScienceWorld의 세 가지 실제 시뮬레이션 계획 작업에 대해 Mistral-7B, Gemma-7B, Llama-3-8B의 세 가지 최신 오픈소스 LLM으로 제안 방법을 평가함.</li>
+</ul>
+<p>Experimental results on three complex real-world simulated datasets with three state-of-the-art open-source LLMs, Mistral-7B, Gemma-7B, and Llama-3-8B, demonstrate that our method can achieve superior performance compared to various strong baselines.</p>
+<ul>
+<li>세 가지 최신 오픈소스 LLM을 사용한 세 개의 복잡한 실제 시뮬레이션 데이터셋에 대한 실험 결과, 제안 방법이 다양한 강력한 기준선에 비해 우수한 성능을 달성할 수 있음을 입증함.</li>
+</ul>
+<p>Besides, we analyze to illustrate that our WKM can effectively alleviate the blind trial-and-error and hallucinatory action issues, providing strong support for the agent’s understanding of the world.</p>
+<ul>
+<li>또한 WKM이 맹목적 시행착오와 환각 동작 문제를 효과적으로 완화하여 에이전트의 세계 이해를 강력히 뒷받침할 수 있음을 보여줌.</li>
+</ul>
+<p>Other interesting findings include: 1) our instance-level task knowledge can generalize better to unseen tasks, 2) weak WKM can guide strong agent model planning, and 3) unified WKM training has promising potential for further development.</p>
+<ul>
+<li>다른 흥미로운 발견으로는 1) 인스턴스 수준 작업 지식이 보이지 않는 작업에 더 잘 일반화될 수 있고, 2) 약한 WKM이 강한 에이전트 모델 계획을 안내할 수 있으며, 3) 통합 WKM 훈련이 추가 개발을 위해 유망한 잠재력을 가짐.</li>
+</ul>
 
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-papers_list">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1703343600000" data-listing-file-modified-sort="1712502758092" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="868">
-<a href="../pages/papers/DrQA/DrQA.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="../pages/papers/DrQA/DrQA.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-DrQA: Reading Wikipedia to Answer Open-Domain Questions
-</h5>
-<div class="card-text listing-description">
-<p>ODQA의 시작점이 되는 논문을 소개합니다.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Junwoo Kim
-</div>
-<div class="listing-date">
-Dec 24, 2023
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1715266800000" data-listing-file-modified-sort="1716814715125" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1424">
-<a href="../pages/papers/llm_agent/llm_agent.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="../pages/papers/llm_agent/Overview_Of_LLM_Agent.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-LLM Agent
-</h5>
-<div class="card-text listing-description">
-<p>대화형 Interaction에서 벗어나, Task를 수행하기 위한 LLM Agent를 소개합니다.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Junwoo Kim
-</div>
-<div class="listing-date">
-May 10, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1703602800000" data-listing-file-modified-sort="1712747597618" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1233">
-<a href="../pages/papers/RAG/RAG.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="../pages/papers/RAG/RAG.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-RAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task.
-</h5>
-<div class="card-text listing-description">
-<p>LLM이 가진 약점을 타파하려는 현시점 가장 유의미한 시도를 정리합니다.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Junwoo Kim
-</div>
-<div class="listing-date">
-Dec 27, 2023
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

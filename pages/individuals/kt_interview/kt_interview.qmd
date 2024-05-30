@@ -6,6 +6,7 @@ description: |
 date: "2024-05-26"
 author: "Junwoo Kim"
 image: ../pen_image.png
+draft: True
 ---
 
 ### 지원자가 보는 KT는 어떤 회사라고 생각하십니까? (업무환경, 현재의 상황, 비전, 기업문화 등 자유롭게 기술) 그리고 지원자는 KT에서 어떤 역할을 하고 싶은지 구체적으로 기술하여 주십시오. (최소 500자)

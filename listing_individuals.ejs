@@ -1,0 +1,11 @@
+<h2>Individuals</h2>
+
+<div class="card-container">
+<% for (const item of items) { %>
+  <a href="<%= item.path %>" class="card" title="<%= item.title %>">
+    <img class="card-image" src=<%=item.image%> alt="이미지 설명">
+    <span class="card-text"><%= item.title %></span>
+    <span class="card-text-author"><%= item.author%>, <%= item.date %></span>
+  </a>
+<% } %>
+</div>

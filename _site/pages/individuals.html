@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-papers_list .list');
+    const listingTargetEl = window.document.querySelector('#listing-individuals_list .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
@@ -84,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-papers_list'] = new List('listing-papers_list', options);
+    window['quarto-listings']['listing-individuals_list'] = new List('listing-individuals_list', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -157,11 +157,11 @@ window.Quarto = {
 <span class="menu-text">technical writing</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pages/individuals.html"> 
+    <a class="nav-link active" href="../pages/individuals.html" aria-current="page"> 
 <span class="menu-text">individuals</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../pages/papers.html" aria-current="page"> 
+    <a class="nav-link" href="../pages/papers.html"> 
 <span class="menu-text">papers</span></a>
   </li>  
 </ul>
@@ -183,7 +183,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
@@ -194,77 +194,52 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-papers_list">
+<div class="quarto-listing quarto-listing-container-grid" id="listing-individuals_list">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1703343600000" data-listing-file-modified-sort="1712502758092" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="868">
-<a href="../pages/papers/DrQA/DrQA.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1709478000000" data-listing-file-modified-sort="1713091539369" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1020">
+<a href="../pages/individuals/gpt_base_blog/gpt_base_blog.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="../pages/papers/DrQA/DrQA.png" class="thumbnail-image card-img" style="height: 150px;">
+<img src="../pages/individuals/gpt_base_blog/how_to_build_quarto_website_blog.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-DrQA: Reading Wikipedia to Answer Open-Domain Questions
+GPTs Service로 개인블로그 만들기
 </h5>
 <div class="card-text listing-description">
-<p>ODQA의 시작점이 되는 논문을 소개합니다.</p>
+<p>Claude3만으로 Quarto 기반 블로그 만들기</p>
 </div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Junwoo Kim
 </div>
 <div class="listing-date">
-Dec 24, 2023
+Mar 4, 2024
 </div>
 </div>
 </div>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1715266800000" data-listing-file-modified-sort="1716814715125" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1424">
-<a href="../pages/papers/llm_agent/llm_agent.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="1" data-listing-date-sort="1713020400000" data-listing-file-modified-sort="1714973881356" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="564">
+<a href="../pages/individuals/nlp_interview/nlp_interview.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="../pages/papers/llm_agent/Overview_Of_LLM_Agent.png" class="thumbnail-image card-img" style="height: 150px;">
+<img src="../pages/individuals/nlp_interview/RNN.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-LLM Agent
+NLP Interview List
 </h5>
 <div class="card-text listing-description">
-<p>대화형 Interaction에서 벗어나, Task를 수행하기 위한 LLM Agent를 소개합니다.</p>
+<p>NLP 면접질문을 대비합니다. GPT 기반으로 작성되었습니다.</p>
 </div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Junwoo Kim
 </div>
 <div class="listing-date">
-May 10, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1703602800000" data-listing-file-modified-sort="1712747597618" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1233">
-<a href="../pages/papers/RAG/RAG.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="../pages/papers/RAG/RAG.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-RAG: Retrieval Augmented Generation for Knowledge-Intensive NLP Task.
-</h5>
-<div class="card-text listing-description">
-<p>LLM이 가진 약점을 타파하려는 현시점 가장 유의미한 시도를 정리합니다.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Junwoo Kim
-</div>
-<div class="listing-date">
-Dec 27, 2023
+Apr 14, 2024
 </div>
 </div>
 </div>

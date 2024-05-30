@@ -24,13 +24,13 @@ listing:
       feed: false
       template: listing_papers.ejs
     - id: "list3"
-      contents: pages/posts
+      contents: pages/individuals
       sort: "date desc"
       type: custom
       categories: false
       sort-ui: false
       filter-ui: false
       feed: false
-      template: listing_posts.ejs
+      template: listing_individuals.ejs
 
 ---
