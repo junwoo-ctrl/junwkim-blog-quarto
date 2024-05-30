@@ -13,14 +13,14 @@ website:
     background: "#0a3e3c"
     foreground: White
     left:
-      - href: pages/introduce.qmd
-        text: introduce
       - href: pages/technical_writing.qmd
         text: technical writing
       - href: pages/individuals.qmd
         text: individuals
       - href: pages/papers.qmd
         text: papers
+      - href: pages/introduce.qmd
+        text: introduce
     right:
       - href: main.qmd
         text: Back To Home

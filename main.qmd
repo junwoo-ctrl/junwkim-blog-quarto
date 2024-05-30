@@ -32,5 +32,4 @@ listing:
       filter-ui: false
       feed: false
       template: listing_individuals.ejs
-
 ---
