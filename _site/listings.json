@@ -2,24 +2,25 @@
   {
     "listing": "/pages/technical_writing.html",
     "items": [
-      "/pages/technical_writing/Agent-Planning-with-World-Knowledge-Model/llm_agent.html"
+      "/pages/technical_writing/llm_agent/llm_agent.html"
     ]
   },
   {
     "listing": "/pages/papers.html",
     "items": [
+      "/pages/papers/Agent-Planning-with-World-Knowledge-Model/llm_agent.html",
       "/pages/papers/DrQA/DrQA.html",
-      "/pages/papers/llm_agent/llm_agent.html",
       "/pages/papers/RAG/RAG.html"
     ]
   },
   {
     "listing": "/main.html",
     "items": [
-      "/pages/technical_writing/Agent-Planning-with-World-Knowledge-Model/llm_agent.html",
-      "/pages/papers/llm_agent/llm_agent.html",
+      "/pages/technical_writing/llm_agent/llm_agent.html",
+      "/pages/papers/Agent-Planning-with-World-Knowledge-Model/llm_agent.html",
       "/pages/papers/RAG/RAG.html",
       "/pages/papers/DrQA/DrQA.html",
+      "/pages/individuals/kt_interview/kt_interview.html",
       "/pages/individuals/nlp_interview/nlp_interview.html",
       "/pages/individuals/gpt_base_blog/gpt_base_blog.html"
     ]
@@ -28,6 +29,7 @@
     "listing": "/pages/individuals.html",
     "items": [
       "/pages/individuals/gpt_base_blog/gpt_base_blog.html",
+      "/pages/individuals/kt_interview/kt_interview.html",
       "/pages/individuals/nlp_interview/nlp_interview.html"
     ]
   }
